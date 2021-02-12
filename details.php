@@ -62,52 +62,31 @@ session_start();
 <div class="wrapper">
 
     <!-- HEADER -->
-    <header class="header fixed">
-        <div class="header-wrapper">
-            <div class="container">
-
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.php"><img src="assets/img/logo-rentit.jpg" alt="Gogo"/></a>
-                </div>
-                <!-- /Logo -->
-
-                <!-- Mobile menu toggle button -->
-                 <!-- /Mobile menu toggle button -->
+    <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
+            <ul>
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="aboutus.php">About us</a></li>
+                <li><a href="vehicles.php">VAHICLES</a></li>
+                <li><a href="#">FAQS</a></li>
+                <li><a href="#">HOT DEALS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <?php
+                    if(!$_SESSION['login'])
+                        echo '
+                        <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
+                        <li><a class="loginSignup" href="#">LOGIN</a></li>';
+                       else
+                    echo '<li><a class="loginSignup" href="logout.php">LOGOUT</a></li>';
+                ?>
                 
-                <!-- Navigation -->
-                <nav class="navigation closed clearfix">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <!-- navigation menu -->
-                            <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
-                            <ul class="nav sf-menu">
-                                <li class="active"><a href="index.php">Home</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="vehicles.php">Vehicles</a></li>
-                                <li><a href="#">FAQS</a></li>
-                                <li><a href="#">Hot Deals</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <?php
-                                if(!$_SESSION['login'])
-                                    echo '
-                                    <li><a href="login.php"><i class="fa fa-user">Login</i></a></li>
-                                    <li><a href="signup.php"><i class="fa fa-sign-in">Signup</i></a></li>';
-                                else
-                                    echo '<li><a href="logout.php"><i class="fa fa-sign-in">Logout</i></a></li>';
-                                ?>
-                            </ul>
-                            <!-- /navigation menu -->
-                        </div>
-                    </div>
-                    <!-- Add Scroll Bar -->
-                    <div class="swiper-scrollbar"></div>
-                </nav>
-                <!-- /Navigation -->
-
-            </div>
-        </div>
-
+                
+            </ul>
+        </nav>
     </header>
 
 <section class="page-section">
@@ -124,16 +103,18 @@ session_start();
                                 
                                 if(isset($_POST['formsubmitted'])){
                                     $carid = $_POST['carid'];
+                                    $_SESSION['carid'] = $carid;
                                     $dropOffLoc =  $_POST['formSearchOffLocation'];
                                     $pickUpLoc = $_POST['formSearchUpLocation'];
-                                    $pickUpDate = $_POST['formSearchUpDate'];
-                                    $dropOffDate = $_POST['formSearchOffDate'];
+                                    $pickUpDate = Date('Y:m:d ', strtotime($_POST['formSearchUpDate']));
+                                    $dropOffDate = Date('Y:m:d ', strtotime($_POST['formSearchOffDate']));
                                     $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
                                     $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
-                                    $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpLoc", "droptime"=>"$dropOffTime");
-                                    $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpLoc, $dropOffTime);
+                                    $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
+                                    $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
                                     $_SESSION['regiss'] = $regiss;
                                    echo
+                                   $_SESSION['carid'].
                                     '<form action="book.php" method="post">
                                         <div class="form-title" >
                                             <i class="fa fa-globe"></i>
@@ -146,14 +127,14 @@ session_start();
                                             <div class="col-sm-6">
                                                 <div class="form-group has-icon has-label">
                                                     <label  style="color: #fff">Picking Up Location</label>
-                                                    <input type="text" class="form-control" name="pickuploc" placeholder="'.$pickUpLoc.'" value="'.$pickUpLoc.'">
+                                                    <input type="text" class="form-control" name="pickuploc" placeholder="'.$_SESSION['regiss'][2].'" value="'.$_SESSION['regiss'][2].'">
                                                     <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group has-icon has-label">
                                                     <label  style="color: #fff" >Dropping Off Location</label>
-                                                    <input type="text" class="form-control" name="dropoffloc" placeholder="'.$dropOffLoc.'" value ="'.$dropOffLoc.'">
+                                                    <input type="text" class="form-control" name="dropoffloc" placeholder="'.$_SESSION['regiss'][1].'" value ="'.$_SESSION['regiss'][1].'">
                                                     <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                                 </div>
                                             </div>                                
@@ -164,14 +145,14 @@ session_start();
                                             <div class="col-sm-6">
                                                 <div class="form-group has-icon has-label">
                                                     <label  style="color: #fff" >Picking Up Date</label>
-                                                    <input type="text" class="form-control" onfocus="(this.type="date")" name="pickupdate" placeholder="'.$pickUpDate.'" value="'.$pickUpDate.'">
+                                                    <input type="text" class="form-control" onfocus="(this.type="date")" name="pickupdate" placeholder="'.$_SESSION['regiss'][4].'" value="'.$_SESSION['regiss'][4].'">
                                                     <span class="form-control-icon"><i class="fa fa-calendar" ></i></span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group has-icon has-label">
                                                     <label  style="color: #fff">Dropping Off Date</label>
-                                                    <input type="text" class="form-control" onfocus="(this.type="date")" name="dropoffdate" placeholder="'.$dropOffDate.'" value="'.$dropOffDate.'">
+                                                    <input type="text" class="form-control" onfocus="(this.type="date")" name="dropoffdate" placeholder="'.$_SESSION['regiss'][3].'" value="'.$_SESSION['regiss'][3].'">
                                                     <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                                 </div>
                                             </div>
@@ -182,14 +163,14 @@ session_start();
                                             <div class="col-sm-6">
                                                 <div class="form-group has-icon has-label">
                                                     <label  style="color: #fff">Picking Up Time</label>
-                                                    <input type="test" class="form-control" name="pickuptime" placeholder="'.$pickUpTime.'" value="'.$pickUpTime.'">
+                                                    <input type="time" class="form-control" name="pickuptime" placeholder="'.$_SESSION['regiss'][5].'" value="'.$_SESSION['regiss'][5].'">
                                                     <span class="form-control-icon"><i class="fa fa-clock-o" ></i></span>
                                                 </div>
                                             </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group has-icon has-label">
                                                     <label  style="color: #fff">Dropping Off Time</label>
-                                                    <input type="test" class="form-control" name="dropofftime" placeholder="'.$dropOffTime.'" value="'.$dropOffTime.'">
+                                                    <input type="time" class="form-control" name="dropofftime" placeholder="'.$_SESSION['regiss'][6].'" value="'.$_SESSION['regiss'][6].'">
                                                     <input type="hidden" name="id" value="'.$carid.'">
                                                     <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                                                 </div>
@@ -200,86 +181,91 @@ session_start();
                                         <div class="container-fluid">
                                             <div class="inner">
                                                 <a href="index.php"><i class="fa fa-minus-circle"></i></a>
-                                                <button type="submit" name="book" class="btn btn-submit btn-theme pull-right">Book Now</button>
+                                                <a href="reg-detail.php">Confirm reg-detail</a>
                                                 
 
                                             </div>
                                         </div>
                                     </div>';
                                 }
-                                else
+                                elseif ($_POST['details'])
                                 {
-                                    echo 
-                                    '
-                                    <form action="book.php" method="post">
+                                    $_SESSION['carid'] = $_POST['carid'];
+
+                                    echo
+                                    $_SESSION['carid'].
+                                    '<form action="reg-detail.php" method="post">
                                         <div class="form-title" >
                                             <i class="fa fa-globe"></i>
                                             <h2 >Search  Rental Cars</h2>
                                         </div>
-                                    <div class="row row-inputs" >
-                                    <div class="container-fluid">
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchUpLocation">Picking Up Location</label>
-                                                <input type="text" class="form-control" name="pickuploc" placeholder="'.$_SESSION['regiss'][2].'">
-                                                <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchOffLocation">Dropping Off Location</label>
-                                                <input type="text" class="form-control" name="dropoffloc" placeholder="'.$_SESSION['regiss'][1].'">
-                                                <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>                                
-                                    </div>
-                                </div>
-                                <div class="row row-inputs">
-                                    <div class="container-fluid">
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchUpDate">Picking Up Date</label>
-                                                <input type="text" class="form-control" name="pickupdate" placeholder="m/d/y">
-                                                <span class="form-control-icon"><i class="fa fa-calendar" ></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchOffDate">Dropping Off Date</label>
-                                                <input type="date" class="form-control" name="dropoffdate" placeholder="m/d/y">
-                                                <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-inputs">
-                                    <div class="container-fluid">
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchUpDate">Picking Up Time</label>
-                                                <input type="time" class="form-control" name="pickuptime" placeholder="00:00">
-                                                <span class="form-control-icon"><i class="fa fa-clock-o" ></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchOffDate">Dropping Off Time</label>
-                                                <input type="time" class="form-control" name="dropofftime" placeholder="00:00">
-                                                <input type="hidden" name=id value="'.$_POST['carid'].'">
-                                                <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="row row-submit">
-                                    <div class="container-fluid">
-                                        <div class="inner">
-                                            <a href="index.php"><i class="fa fa-minus-circle"></i></a>
-                                            <button type="submit" name="book" class="btn btn-submit btn-theme pull-right">book</button>
+                                    
+                                    <div class="row row-inputs" >
+                                        <div class="container-fluid">
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label  style="color: #fff">Picking Up Location</label>
+                                                    <input type="text" class="form-control" name="pickuploc" >
+                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label  style="color: #fff" >Dropping Off Location</label>
+                                                    <input type="text" class="form-control" name="dropoffloc"  >
+                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                </div>
+                                            </div>                                
                                         </div>
                                     </div>
-                                </div>';
+                                    <div class="row row-inputs">
+                                        <div class="container-fluid">
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label  style="color: #fff" >Picking Up Date</label>
+                                                    <input type="date" class="form-control" onfocus="(this.type="date")" name="pickupdate" >
+                                                    <span class="form-control-icon"><i class="fa fa-calendar" ></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label  style="color: #fff">Dropping Off Date</label>
+                                                    <input type="date" class="form-control" onfocus="(this.type="date")" name="dropoffdate" >
+                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-inputs">
+                                        <div class="container-fluid">
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label  style="color: #fff">Picking Up Time</label>
+                                                    <input type="time" class="form-control" name="pickuptime"  >
+                                                    <span class="form-control-icon"><i class="fa fa-clock-o" ></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label  style="color: #fff">Dropping Off Time</label>
+                                                    <input type="time" class="form-control" name="dropofftime">
+                                                    <input type="hidden" name="carid" value="'.$_SESSION['carid'].'">
+                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row row-submit">
+                                        <div class="container-fluid">
+                                            <div class="inner">
+                                                <a href="index.php"><i class="fa fa-minus-circle"></i></a>
+                                                <button type="submit" name="formSearchSubmit" class="btn btn-submit btn-theme pull-right">Register</button>
+
+                                            </div>
+                                        </div>
+                                    </div>';
                                 }
                                 ?>
                             </form>

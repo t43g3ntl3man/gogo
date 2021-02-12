@@ -1,8 +1,11 @@
 <?php
 session_start();
+unset($_SESSION['regiss']);
+unset($_SESSION['carid']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
@@ -13,11 +16,14 @@ session_start();
     <!-- Favicon -->
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <!-- CSS Global -->
     <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
- 
+
     <link href="assets/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="assets/plugins/prettyphoto/css/prettyPhoto.css" rel="stylesheet">
     <link href="assets/plugins/owl-carousel2/assets/owl.carousel.min.css" rel="stylesheet">
@@ -37,194 +43,205 @@ session_start();
     <script src="assets/plugins/iesupport/respond.min.js"></script>
     <![endif]-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlwPHnB44mrlza-Elp8vhR_BPI1xkA_2E&callback=initAutocomplete&libraries=places&v=weekly" defer></script>
-      <script src="asset/js/index.js"></script>
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlwPHnB44mrlza-Elp8vhR_BPI1xkA_2E&callback=initAutocomplete&libraries=places&v=weekly"
+        defer></script>
+    <script src="asset/js/index.js"></script>
 
 
 </head>
+
 <body id="home" class="wide">
-<!-- PRELOADER -->
-<div id="preloader">
-    <div id="preloader-status">
-        <div class="spinner">
-            <div class="rect1"></div>
-            <div class="rect2"></div>
-            <div class="rect3"></div>
-            <div class="rect4"></div>
-            <div class="rect5"></div>
+    <!-- PRELOADER -->
+    <div id="preloader">
+        <div id="preloader-status">
+            <div class="spinner">
+                <div class="rect1"></div>
+                <div class="rect2"></div>
+                <div class="rect3"></div>
+                <div class="rect4"></div>
+                <div class="rect5"></div>
+            </div>
+            <div id="preloader-title">Loading</div>
         </div>
-        <div id="preloader-title">Loading</div>
     </div>
-</div>
-<!-- /PRELOADER -->
+    <!-- /PRELOADER -->
 
-<!-- WRAPPER -->
-<div class="wrapper">
+    <!-- WRAPPER -->
+    <div class="wrapper">
 
-    <!-- HEADER -->
-    <header class="header fixed">
-        <div class="header-wrapper">
-            <div class="container">
-
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.php"><img src="assets/img/logo-rentit.jpg" alt="Gogo"/></a>
-                </div>
-                <!-- /Logo -->
-
-                <!-- Mobile menu toggle button -->
-                 <!-- /Mobile menu toggle button -->
+        <!-- HEADER -->
+        <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
+            <ul>
+                <li><a class="active" href="index.php">Home</a></li>
+                <li><a href="aboutus.php">About us</a></li>
+                <li><a href="veh.php">VAHICLES</a></li>
+                <li><a href="#">FAQS</a></li>
+                <li><a href="#">HOT DEALS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <?php
+                    if(!$_SESSION['login'])
+                        echo '
+                        <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
+                        <li><a class="loginSignup" href="#">LOGIN</a></li>';
+                       else
+                    echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
+                ?>
                 
-                <!-- Navigation -->
-                <nav class="navigation closed clearfix">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <!-- navigation menu -->
-                            <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
-                            <ul class="nav sf-menu">
-                                <li class="active"><a href="index.php">Home</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="vehicles.php">Vehicles</a></li>
-                                <li><a href="#">FAQS</a></li>
-                                <li><a href="#">Hot Deals</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <?php
-                                if(!$_SESSION['login'])
-                                    echo '
-                                    <li><a href="login.php"><i class="fa fa-user">Login</i></a></li>
-                                    <li><a href="signup.php"><i class="fa fa-sign-in">Signup</i></a></li>';
-                                else
-                                    echo '<li><a href="logout.php"><i class="fa fa-sign-in">Logout</i></a></li>';
-                                ?>
-                            </ul>
-                            <!-- /navigation menu -->
-                        </div>
+                
+            </ul>
+        </nav>
+        <!-- /HEADER -->
+        <div class="banner">
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="assets/img/slider/1.jpg" class="d-block w-100" alt="...">
                     </div>
-                    <!-- Add Scroll Bar -->
-                    <div class="swiper-scrollbar"></div>
-                </nav>
-                <!-- /Navigation -->
-
-            </div>
-        </div>
-
-    </header>
-    <!-- /HEADER -->
-
-    <!-- CONTENT AREA -->
-    <div class="content-area">
-
-        <!-- PAGE -->
-                <!-- /PAGE -->
-
-        <!-- PAGE -->
-        <section class="page-section">
-    <div class="container">
-                <h2 class="section-title wow fadeInDown" data-wow-offset="200" data-wow-delay="100ms">
-                    <small>All Discounts Just For You</small>
-                    <span>Get best rental deals</span>
-                </h2>
-                <!-- Search form -->
-                 <div class="row">
-                    <div class="col-sm-12 col-md-10 col-md-offset-1">
-                        <div class="form-search">
-                            <form action="vehicles.php" method="post">
-                                <div class="form-title" >
-                                    <i class="fa fa-globe"></i>
-                                    <h2 >Search  Rental Cars</h2>
-                                </div>
-                                <div class="row row-inputs" >
-                                    <div class="container-fluid">
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchUpLocation">Picking Up Location</label>
-                                                <input type="text" class="form-control" name="formSearchUpLocation" placeholder="Airport or Anywhere">
-                                                <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchOffLocation">Dropping Off Location</label>
-                                                <input type="text" class="form-control" name="formSearchOffLocation" placeholder="Airport or Anywhere">
-                                                <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                            </div>
-                                        </div>                                
-                                    </div>
-                                </div>
-                                <div class="row row-inputs">
-                                    <div class="container-fluid">
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchUpDate">Picking Up Date</label>
-                                                <input type="date" class="form-control" name="formSearchUpDate" placeholder="m/d/y">
-                                                <span class="form-control-icon"><i class="fa fa-calendar" ></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchOffDate">Dropping Off Date</label>
-                                                <input type="date" class="form-control" name="formSearchOffDate" placeholder="m/d/y">
-                                                <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row row-inputs">
-                                    <div class="container-fluid">
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchUpDate">Picking Up Time</label>
-                                                <input type="time" class="form-control" name="formSearchUpTime" placeholder="00:00">
-                                                <span class="form-control-icon"><i class="fa fa-clock-o" ></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group has-icon has-label">
-                                                <label  style="color: #fff" for="formSearchOffDate">Dropping Off Time</label>
-                                                <input type="time" class="form-control" name="formSearchOffTime" placeholder="00:00">
-                                                <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row row-submit">
-                                    <div class="container-fluid">
-                                        <div class="inner">
-                                            <a href="index.php"><i class="fa fa-minus-circle"></i></a>
-                                            <button type="submit" name="formSearchSubmit" class="btn btn-submit btn-theme pull-right">Find Car</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/slider/2.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/slider/3.jpg" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="assets/img/slider/4.jpg" class="d-block w-100" alt="...">
                     </div>
                 </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
+            <section class="page-section">
+                    <h2 class="section-title wow fadeInDown" data-wow-offset="200" data-wow-delay="100ms">
+                        <small>All Discounts Just For You</small>
+                        <span>Get best rental deals</span>
+                    </h2>
+                    <!-- Search form -->
+                    <div class="row">
+                        <div class="col-sm-12 col-md-10 col-md-offset-1">
+                            <div class="form-search">
+                                <form action="vehicles.php" method="post">
+                                    <div class="form-title">
+                                        <i class="fa fa-globe"></i>
+                                        <h2>Search Rental Cars</h2>
+                                    </div>
+                                    <div class="row row-inputs">
+                                        <div class="container-fluid">
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label style="color: #fff" for="formSearchUpLocation">Picking Up
+                                                        Location</label>
+                                                    <input type="text" class="form-control" name="formSearchUpLocation"
+                                                        placeholder="Airport or Anywhere">
+                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label style="color: #fff" for="formSearchOffLocation">Dropping Off
+                                                        Location</label>
+                                                    <input type="text" class="form-control" name="formSearchOffLocation"
+                                                        placeholder="Airport or Anywhere">
+                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-inputs">
+                                        <div class="container-fluid">
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label style="color: #fff" for="formSearchUpDate">Picking Up
+                                                        Date</label>
+                                                    <input type="date" class="form-control" name="formSearchUpDate"
+                                                        placeholder="m/d/y">
+                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label style="color: #fff" for="formSearchOffDate">Dropping Off
+                                                        Date</label>
+                                                    <input type="date" class="form-control" name="formSearchOffDate"
+                                                        placeholder="m/d/y">
+                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row row-inputs">
+                                        <div class="container-fluid">
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label style="color: #fff" for="formSearchUpDate">Picking Up
+                                                        Time</label>
+                                                    <input type="time" class="form-control" name="formSearchUpTime"
+                                                        placeholder="00:00">
+                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group has-icon has-label">
+                                                    <label style="color: #fff" for="formSearchOffDate">Dropping Off
+                                                        Time</label>
+                                                    <input type="time" class="form-control" name="formSearchOffTime"
+                                                        placeholder="00:00">
+                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
     
-</section>
+                                    <div class="row row-submit">
+                                        <div class="container-fluid">
+                                            <div class="inner">
+                                                <a href="index.php"><i class="fa fa-minus-circle"></i></a>
+                                                <button type="submit" name="formSearchSubmit"
+                                                    class="btn btn-submit btn-theme pull-right">Find Car</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>    
+            </section>
+        </div>
 
         <!-- /PAGE -->
 
         <!-- PAGE -->
         <?php include("connection.php") ?>
-       
-        <!-- PAGE -->
-         <section class="page-section">
-            <div class="container">
 
+        <!-- PAGE -->
+        <section class="page-section">
+            <div class="container">
                 <h2 class="section-title wow fadeInUp" data-wow-offset="70" data-wow-delay="100ms">
                     <small>What a Kind of Car You Want</small>
                     <span>Great Rental Offers for You</span>
                 </h2>
 
                 <div class="tabs wow fadeInUp" data-wow-offset="70" data-wow-delay="300ms">
-                    <ul id="tabs" class="nav"><!--
-                        --><li class=""><a href="#tab-1" data-toggle="tab">Best Offers</a></li><!--
-                        --><li class="active"><a href="#tab-2" data-toggle="tab">Popular Cars</a></li><!--
-                        --><li class=""><a href="#tab-3" data-toggle="tab">Economic Cars</a></li>
+                    <ul id="tabs" class="nav">
+                        <li class=""><a href="#tab-1" data-toggle="tab">Economic</a></li>
+                        <li class=""><a href="#tab-2" data-toggle="tab">Executive</a></li>
+                        <li class=""><a href="#tab-3" data-toggle="tab">Luxury</a></li>
+                        <li class=""><a href="#tab-4" data-toggle="tab">Wagon</a></li>
+                        <li class=""><a href="#tab-5" data-toggle="tab">SUV</a></li>
                     </ul>
                 </div>
 
@@ -342,7 +359,7 @@ session_start();
                                 <div class="swiper-wrapper">
                                     <!-- Slides -->
                                     <?php
-                                    $query_exe = "SELECT id, name, model, fuel_type, engine_type FROM cars where car_type = 'Executive'";
+                                    $query_exe = "SELECT id, name, model, fuel_type, engine_type FROM cars where car_type = 'Luxuriuos'";
                                     $result_exe = $con->query($query_exe);
                                     $counter = 0;
                                     while($row_exe = $result_exe -> fetch_assoc()){
@@ -391,17 +408,17 @@ session_start();
         <!-- /PAGE -->
 
         <!-- PAGE -->
-        
-        <!-- PAGE -->
-        <!-- /PAGE -->
 
         <!-- PAGE -->
         <!-- /PAGE -->
 
+        <!-- PAGE -->
+        <!-- /PAGE -->
+
         <!-- /PAGE -->
 
         <!-- PAGE -->
-       <section class="page-section contact dark">
+        <section class="page-section contact dark">
             <div class="container">
 
                 <!-- Get in touch -->
@@ -422,7 +439,9 @@ session_start();
                                     <div class="outer required">
                                         <div class="form-group af-inner has-icon">
                                             <label class="sr-only" for="name">Name</label>
-                                            <input type="text" name="name" id="name" placeholder="Name" value="" size="30" data-toggle="tooltip" title="Name is required" class="form-control placeholder"/>
+                                            <input type="text" name="name" id="name" placeholder="Name" value=""
+                                                size="30" data-toggle="tooltip" title="Name is required"
+                                                class="form-control placeholder" />
                                             <span class="form-control-icon"><i class="fa fa-user"></i></span>
                                         </div>
                                     </div>
@@ -433,10 +452,9 @@ session_start();
                                     <div class="outer required">
                                         <div class="form-group af-inner has-icon">
                                             <label class="sr-only" for="email">Email</label>
-                                            <input
-                                                    type="text" name="email" id="email" placeholder="Email" value="" size="30"
-                                                    data-toggle="tooltip" title="Email is required"
-                                                    class="form-control placeholder"/>
+                                            <input type="text" name="email" id="email" placeholder="Email" value=""
+                                                size="30" data-toggle="tooltip" title="Email is required"
+                                                class="form-control placeholder" />
                                             <span class="form-control-icon"><i class="fa fa-envelope"></i></span>
                                         </div>
                                     </div>
@@ -447,26 +465,26 @@ session_start();
                             <div class="outer required">
                                 <div class="form-group af-inner has-icon">
                                     <label class="sr-only" for="subject">Subject</label>
-                                    <input
-                                            type="text" name="subject" id="subject" placeholder="Subject" value="" size="30"
-                                            data-toggle="tooltip" title="Subject is required"
-                                            class="form-control placeholder"/>
+                                    <input type="text" name="subject" id="subject" placeholder="Subject" value=""
+                                        size="30" data-toggle="tooltip" title="Subject is required"
+                                        class="form-control placeholder" />
                                     <span class="form-control-icon"><i class="fa fa-bars"></i></span>
                                 </div>
                             </div>
 
                             <div class="form-group af-inner has-icon">
                                 <label class="sr-only" for="input-message">Message</label>
-                                <textarea
-                                        name="message" id="input-message" placeholder="Message" rows="4" cols="50"
-                                        data-toggle="tooltip" title="Message is required"
-                                        class="form-control placeholder"></textarea>
+                                <textarea name="message" id="input-message" placeholder="Message" rows="4" cols="50"
+                                    data-toggle="tooltip" title="Message is required"
+                                    class="form-control placeholder"></textarea>
                                 <span class="form-control-icon"><i class="fa fa-bars"></i></span>
                             </div>
 
                             <div class="outer required">
                                 <div class="form-group af-inner">
-                                    <input type="submit" name="submit" class="form-button form-button-submit btn btn-block btn-theme ripple-effect btn-theme-dark" id="submit_btn" value="Send message" />
+                                    <input type="submit" name="submit"
+                                        class="form-button form-button-submit btn btn-block btn-theme ripple-effect btn-theme-dark"
+                                        id="submit_btn" value="Send message" />
                                 </div>
                             </div>
 
@@ -496,7 +514,7 @@ session_start();
                                 <div class="media-left"><i class="fa fa-clock-o"></i></div>
                                 <div class="media-body">24+ hours available</div>
                             </li>
-                            
+
                         </ul>
 
                     </div>
@@ -510,9 +528,9 @@ session_start();
         <!-- /PAGE -->
 
         <!-- PAGE -->
-                
+
         <!-- PAGE -->
-        
+
         <!-- /PAGE -->
 
     </div>
@@ -525,8 +543,9 @@ session_start();
                 <div class="row">
 
                     <div class="col-sm-12">
-                        
-                        <div class="copyright">&copy; 2021 GOGO Transport Services — A Rental Car Website made with passion by Hashtag Digitals</div>
+
+                        <div class="copyright">&copy; 2021 GOGO Transport Services — A Rental Car Website made with
+                            passion by Hashtag Digitals</div>
                     </div>
 
                 </div>
@@ -537,33 +556,43 @@ session_start();
 
     <div id="to-top" class="to-top"><i class="fa fa-angle-up"></i></div>
 
-</div>
-<!-- /WRAPPER -->
+    </div>
+    <!-- /WRAPPER -->
 
-<!-- JS Global -->
-<script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
-<script src="assets/plugins/superfish/js/superfish.min.js"></script>
-<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
-<script src="assets/plugins/owl-carousel2/owl.carousel.min.js"></script>
-<script src="assets/plugins/jquery.sticky.min.js"></script>
-<script src="assets/plugins/jquery.easing.min.js"></script>
-<script src="assets/plugins/jquery.smoothscroll.min.js"></script>
-<!--<script src="assets/plugins/smooth-scrollbar.min.js"></script>-->
-<!--<script src="assets/plugins/wow/wow.min.js"></script>-->
-<script>
+    <!-- JS Global -->
+    <script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="assets/plugins/superfish/js/superfish.min.js"></script>
+    <script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
+    <script src="assets/plugins/owl-carousel2/owl.carousel.min.js"></script>
+    <script src="assets/plugins/jquery.sticky.min.js"></script>
+    <script src="assets/plugins/jquery.easing.min.js"></script>
+    <script src="assets/plugins/jquery.smoothscroll.min.js"></script>
+    <!--<script src="assets/plugins/smooth-scrollbar.min.js"></script>-->
+    <!--<script src="assets/plugins/wow/wow.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+        crossorigin="anonymous"></script>
+    <script>
     // WOW - animated content
     //new WOW().init();
-</script>
-<script src="assets/plugins/swiper/js/swiper.jquery.min.js"></script>
-<script src="assets/plugins/datetimepicker/js/moment-with-locales.min.js"></script>
-<script src="assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    </script>
+    <script src="assets/plugins/swiper/js/swiper.jquery.min.js"></script>
+    <script src="assets/plugins/datetimepicker/js/moment-with-locales.min.js"></script>
+    <script src="assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
-<!-- JS Page Level -->
-<script src="assets/js/theme-ajax-mail.js"></script>
-<script src="assets/js/theme.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <!-- JS Page Level -->
+    <script src="assets/js/theme-ajax-mail.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 
 </body>
+
 </html>

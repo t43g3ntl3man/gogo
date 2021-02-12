@@ -45,8 +45,8 @@
             $row = $result->fetch_assoc();
             $id = $row['id'];
             $query3 = "INSERT INTO verification (ver, userid) Values ('$code', '$id')";
-            $con->query($query3);
-            $result = file_get_contents($url, false, $options);
+            #$con->query($query3);
+            #$result = file_get_contents($url, false, $options);
             echo '
 <!DOCTYPE html>
 <html lang="en">

@@ -56,41 +56,23 @@
     <!-- HEADER -->
     <header class="header fixed">
         <div class="header-wrapper">
-            <div class="container">
-
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.php"><img src="assets/img/logo-rentit.png" alt="Rent It"/></a>
-                </div>
-                <!-- /Logo -->
-
-                <!-- Mobile menu toggle button -->
-                <a href="#" class="menu-toggle btn ripple-effect btn-theme-transparent"><i class="fa fa-bars"></i></a>
-                <!-- /Mobile menu toggle button -->
-
-                <!-- Navigation -->
-                <nav class="navigation closed clearfix">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <!-- navigation menu -->
-                            <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
-                            <ul class="nav sf-menu">
-                                <li class="active"><a href="index.php">Home</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="vehicles.php">Vehicles</a></li>
-                                <li><a href="#">FAQS</a></li>
-                                <li><a href="#">Hot Deals</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <li><a href="login.php"><i class="fa fa-user">Login</i></a></li>
-                                <li><a href="signup.php"><i class="fa fa-sign-in">Signup</i></a></li>
-                            </ul>
-                            <!-- /navigation menu -->
-                        </div>
-                    </div>
-                    <!-- Add Scroll Bar -->
-                    <div class="swiper-scrollbar"></div>
-                </nav>
-                <!-- /Navigation -->
+            <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
+            <ul>
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="aboutus.php">About us</a></li>
+                <li><a href="vehicles.php">VAHICLES</a></li>
+                <li><a href="#">FAQS</a></li>
+                <li><a href="#">HOT DEALS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a class="loginSignup" href="#">LOGIN</a></li>
+                <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
+            </ul>
+        </nav>
 
             </div>
         </div>
@@ -117,41 +99,33 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h3 class="block-title"><span>Signup</span></h3>
-                        <form method="post" action="reg.php" class="form-signup">
+                        <form method="post" action="regtemp.php" class="form-login">
                             <div class="row">
+                                
                                 <div class="col-md-8">
-                                    <div class="form-group">
-                                        <input class="form-control" name="name" type="text" placeholder="First Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group">
-                                        <input class="form-control" name="number" type="tel" placeholder="92 3xx xxx xxx x" pattern="[0-9]{2}-[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{1}">
-                                    </div>
+                                    <div class="form-group"><input name="first-name" class="form-control" type="text" placeholder="First Name"></div>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="form-group">
-                                        <input class="form-control" name="email" type="text" placeholder="Email">
-                                    </div>
+                                    <div class="form-group"><input name="last-name" class="form-control" type="text" placeholder="Last Name"></div>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="form-group">
-                                        <input class="form-control" name="password" type="password" placeholder="Your password">
-                                    </div>
+                                    <div class="form-group"><input name="email" class="form-control" type="text" placeholder="Email"></div>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="form-group">
-                                        <input class="form-control" name="confirm" type="password" placeholder="Confirm password">
-                                    </div>
+                                    <div class="form-group"><input name="number" class="form-control" type="text" placeholder="Mobile Number"></div>
                                 </div>
-                                <div class="col-md-6 col-lg-6">
-                                    <div class="checkbox">
-                                        <a class="forgot-password" href="login.php">Already a member</a>
-                                    </div>
+                                <div class="col-md-8">
+                                    <div class="form-group"><input name="password" class="form-control" type="password" placeholder="Enter password"></div>
                                 </div>
-
+                                <div class="col-md-8">
+                                    <div class="form-group"><input name="confirm-password" class="form-control" type="password" placeholder="Confirm Password"></div>
+                                </div>
+                                </div>
+                                <div class="col-md-8 col-lg-2 text-centre-lg">
+                                    <a class="forgot-password" href="#">Already a member!</a>
+                                </div>
                                 <div class="col-md-6">
-                                     <input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="Signup" value="Register">
+                                     <input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="signup" value="Signup">
                                 </div>
                             </div>
                         </form>

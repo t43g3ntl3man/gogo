@@ -92,49 +92,29 @@ if (isset($_POST["findcar"]))
     <!-- HEADER -->
     <header class="header fixed">
         <div class="header-wrapper">
-            <div class="container">
-
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="index.php"><img src="assets/img/logo-rentit.jpg" alt="Gogo"/></a>
-                </div>
-                <!-- /Logo -->
-
-                <!-- Mobile menu toggle button -->
-                <a href="#" class="menu-toggle btn ripple-effect btn-theme-transparent"><i class="fa fa-bars"></i></a>
-                <!-- /Mobile menu toggle button -->
-
-                <!-- Navigation -->
-                <nav class="navigation closed clearfix">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <!-- navigation menu -->
-                            <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
-                            <ul class="nav sf-menu">
-                                <li class="active"><a href="index.php">Home</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="vehicles.php">Vehicles</a></li>
-                                <li><a href="#">FAQS</a></li>
-                                <li><a href="#">Hot Deals</a></li>
-                                <li><a href="#">Contact</a></li>
-                                <?php
-                                if(!$_SESSION['login'])
-                                    echo '
-                                    <li><a href="login.php"><i class="fa fa-user">Login</i></a></li>
-                                    <li><a href="signup.php"><i class="fa fa-sign-in">Signup</i></a></li>';
-                                else
-                                    echo '<li><a href="logout.php"><i class="fa fa-sign-in">Logout</i></a></li>';
-                                ?>
-                            </ul>
-                            <!-- /navigation menu -->
-                        </div>
-                    </div>
-                    <!-- Add Scroll Bar -->
-                    <div class="swiper-scrollbar"></div>
-                </nav>
-                <!-- /Navigation -->
-
-            </div>
+            <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
+            <ul>
+                <li><a class="active" href="index.php">Home</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="vehicles.php">VAHICLES</a></li>
+                <li><a href="#">FAQS</a></li>
+                <li><a href="#">HOT DEALS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <?php
+                    if(!$_SESSION['login'])
+                        echo '
+                        <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
+                        <li><a class="loginSignup" href="#">LOGIN</a></li>';
+                       else
+                    echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
+                ?>
+            </ul>
+        </nav>
         </div>
 
     </header>
@@ -179,15 +159,11 @@ if (isset($_POST["findcar"]))
                                         $pickUpLoc = $_POST['formSearchUpLocation'];
                                         $pickUpDate = $_POST['formSearchUpDate'];
                                         $dropOffDate = $_POST['formSearchOffDate'];
-                                        $pickUpTime =  $_POST['formSearchUpTime'];
-                                        $dropOffTime = $_POST['formSearchOffTime'];
-                                        $_SESSION['dropOffLoc'] = $dropOffLoc;
-                                        $_SESSION['pickUpLoc'] = $pickUpLoc;
-                                        $_SESSION['pickUpDate'] = $pickUpDate;
-                                        $_SESSION['dropOffDate'] = $dropOffDate;
-                                        $_SESSION['pickUpTime'] = $pickUpTime;
-                                        $_SESSION['dropOffTime'] = $dropOffTime;
-                                        $_SESSION['carid'] = $carid;
+                                        $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
+                                        $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
+                                        $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
+                                        $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
+                                        $_SESSION['regiss'] = $regiss;
 
                                         echo '
                                         <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
@@ -214,14 +190,15 @@ if (isset($_POST["findcar"]))
                                                         <td><i class="fa fa-car"></i>'. $row["model"] .'</td>
                                                         <td><i class="fa fa-dashboard"></i>'. $row["fuel_type"] .'</td>
                                                         <td><i class="fa fa-cog"></i>'. $row["engine_type"] .'</td>
-                                                         <form method="post" action="details.php">
+                                                         <form method="post" action="reg-detail.php">
                                                             
-                                                            <input type="hidden" name = "formSearchOffLocation" value="'.$dropOffLoc.'">
-                                                            <input type="hidden" name = "formSearchUpLocation" value="'.$pickUpLoc.'">
-                                                            <input type="hidden" name = "formSearchUpDate" value="'.$pickUpDate.'">
-                                                            <input type="hidden" name = "formSearchOffDate" value="'.$dropOffDate.'">
-                                                            <input type="hidden" name = "formSearchUpTime" value="'.$pickUpTime.'">
-                                                            <input type="hidden" name = "formSearchOffTime" value="'.$dropOffTime.'">
+                                                               
+                                                            <input type="hidden" name = "formSearchOffLocation" value="'.$_SESSION['regiss'][1].'">
+                                                            <input type="hidden" name = "formSearchUpLocation" value="'.$_SESSION['regiss'][2].'">
+                                                            <input type="hidden" name = "formSearchUpDate" value="'.$_SESSION['regiss'][4].'">
+                                                            <input type="hidden" name = "formSearchOffDate" value="'.$_SESSION['regiss'][3].'">
+                                                            <input type="hidden" name = "formSearchUpTime" value="'.$_SESSION['regiss'][5].'">
+                                                            <input type="hidden" name = "formSearchOffTime" value="'.$_SESSION['regiss'][6].'">
                                                             <input type="hidden" name = "carid" value="'.$carid.'">
                                                             <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="formsubmitted" value="details"></td>
                                                         </form>
@@ -238,14 +215,17 @@ if (isset($_POST["findcar"]))
                                     $counter = 0;
                                     while($row = $result -> fetch_assoc())
                                     {
+                                        $_SESSION['carid'] = $row['id'];
                                         $carid = $row['id'];
                                         $dropOffLoc =  $_POST['formSearchOffLocation'];
                                         $pickUpLoc = $_POST['formSearchUpLocation'];
                                         $pickUpDate = $_POST['formSearchUpDate'];
                                         $dropOffDate = $_POST['formSearchOffDate'];
-                                        $pickUpTime =  $_POST['formSearchUpTime'];
-                                        $dropOffTime = $_POST['formSearchOffTime'];
-                                        
+                                        $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
+                                        $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
+                                        $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
+                                        $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
+                                        $_SESSION['regiss'] = $regiss;
                                         echo '
                                         <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
                                             <div class="media">
@@ -271,16 +251,16 @@ if (isset($_POST["findcar"]))
                                                         <td><i class="fa fa-car"></i>'. $row["model"] .'</td>
                                                         <td><i class="fa fa-dashboard"></i>'. $row["fuel_type"] .'</td>
                                                         <td><i class="fa fa-cog"></i>'. $row["engine_type"] .'</td>
-                                                        <form method="post" action="details.php">
+                                                        <form method="post" action="reg-detail.php">
                                                             
-                                                            <input type="hidden" name = "formSearchOffLocation" value="'.$dropOffLoc.'">
-                                                            <input type="hidden" name = "formSearchUpLocation" value="'.$pickUpLoc.'">
-                                                            <input type="hidden" name = "formSearchUpDate" value="'.$pickUpDate.'">
-                                                            <input type="hidden" name = "formSearchOffDate" value="'.$dropOffDate.'">
-                                                            <input type="hidden" name = "formSearchUpTime" value="'.$pickUpTime.'">
-                                                            <input type="hidden" name = "formSearchOffTime" value="'.$dropOffTime.'">
+                                                            <input type="hidden" name = "formSearchOffLocation" value="'.$_SESSION['regiss'][1].'">
+                                                            <input type="hidden" name = "formSearchUpLocation" value="'.$_SESSION['regiss'][2].'">
+                                                            <input type="hidden" name = "formSearchUpDate" value="'.$_SESSION['regiss'][4].'">
+                                                            <input type="hidden" name = "formSearchOffDate" value="'.$_SESSION['regiss'][3].'">
+                                                            <input type="hidden" name = "formSearchUpTime" value="'.$_SESSION['regiss'][5].'">
+                                                            <input type="hidden" name = "formSearchOffTime" value="'.$_SESSION['regiss'][6].'">
                                                             <input type="hidden" name = "carid" value="'.$carid.'">
-                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="formsubmitted" value="details"></td>
+                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="formsubmitted" value="'.$carid.'"></td>
                                                         </form>
                                                     </tr>
                                                 </table>
@@ -326,9 +306,10 @@ if (isset($_POST["findcar"]))
                                                         <td><i class="fa fa-dashboard"></i>'. $row["fuel_type"] .'</td>
                                                         <td><i class="fa fa-cog"></i>'. $row["engine_type"] .'</td>
                                                         <form method="post" action="details.php">
-                                                            <input type="hidden" name=carid value="'.$carid.'">
+                                                             
+                                                            <input type="hidden" name = "carid" value="'.$carid.'">
                                                             
-                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="details" value="book"></td>
+                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="details" value="'.$_row['id'].'"></td>
                                                         </form>
                                                     </tr>
                                                 </table>
@@ -371,7 +352,7 @@ if (isset($_POST["findcar"]))
                                                         <form method="post" action="details.php">
                                                             
                                                             <input type="hidden" name=carid value="'.$carid.'">
-                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="details" value="book"></td>
+                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="details" value="'.$_SESSION['carid'].'"></td>
                                                         </form>
                                                     </tr>
                                                 </table>

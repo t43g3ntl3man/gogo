@@ -77,55 +77,85 @@ session_start();
         <!-- HEADER -->
         <header class="header fixed">
             <div class="header-wrapper">
-                <div class="container">
-
-                    <!-- Logo -->
-                    <div class="logo">
-                        <a href="index.php"><img src="assets/img/logo-rentit.jpg" alt="Gogo" /></a>
-                    </div>
-                    <!-- /Logo -->
-
-                    <!-- Mobile menu toggle button -->
-                    <!-- /Mobile menu toggle button -->
-
-                    <!-- Navigation -->
-                    <nav class="navigation closed clearfix">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <!-- navigation menu -->
-                                <a href="#" class="menu-toggle-close btn"><i class="fa fa-times"></i></a>
-                                <ul class="nav sf-menu">
-                                    <li class="active"><a href="index.php">Home</a></li>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="vehicles.php">Vehicles</a></li>
-                                    <li><a href="#">FAQS</a></li>
-                                    <li><a href="#">Hot Deals</a></li>
-                                    <li><a href="#">Contact</a></li>
-
-                                </ul>
-                                <!-- /navigation menu -->
-                            </div>
-                        </div>
-                        <!-- Add Scroll Bar -->
-                        <div class="swiper-scrollbar"></div>
-                    </nav>
-                    <!-- /Navigation -->
-
-                </div>
-            </div>
+                <nav>
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
+            <ul>
+                <li><a class="active" href="/">Home</a></li>
+                <li><a href="aboutus.php">About us</a></li>
+                <li><a href="vehicles.php">VAHICLES</a></li>
+                <li><a href="#">FAQS</a></li>
+                <li><a href="#">HOT DEALS</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <?php
+                    if(!$_SESSION['login'])
+                        echo '
+                        <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
+                        <li><a class="loginSignup" href="#">LOGIN</a></li>';
+                       else
+                    echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
+                ?>
+                
+                
+            </ul>
+        </nav>
 
         </header>
 
-
+        
 
         <!--CONTENT AREA-->
+        <?php
+            if(isset($_POST['formsubmitted'])){
+                $carid = $_POST['carid'];
+                $_SESSION['carid'] = $carid;
+                $dropOffLoc =  $_POST['formSearchOffLocation'];
+                $pickUpLoc = $_POST['formSearchUpLocation'];
+                $pickUpDate = Date('Y:m:d ', strtotime($_POST['formSearchUpDate']));
+                $dropOffDate = Date('Y:m:d ', strtotime($_POST['formSearchOffDate']));
+                $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
+                $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
+                $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
+                $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
+                $_SESSION['regiss'] = $regiss;
+            }
+            elseif (isset($_POST['details']))
+            {
+                $carid = $_POST['carid'];
+                $_SESSION['carid'] = $carid;
+                $dropOffLoc =  $_POST['pickuploc'];
+                $pickUpLoc = $_POST['dropoffloc'];
+                $pickUpDate = Date('Y:m:d ', strtotime($_POST['pickupdate']));
+                $dropOffDate = Date('Y:m:d ', strtotime($_POST['dropoffdate']));
+                $pickUpTime =  Date('h:i A', strtotime($_POST['pickuptime']));
+                $dropOffTime = Date('h:i A', strtotime($_POST['dropofftime']));
+                $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
+                $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
+                $_SESSION['regiss'] = $regiss;
+            }
+            elseif (isset($_POST['formSearchSubmit'])) {
+                $carid = $_POST['carid'];
+                $_SESSION['carid'] = $carid;
+                $dropOffLoc =  $_POST['dropoffloc'];
+                $pickUpLoc = $_POST['pickuploc'];
+                $pickUpDate = Date('Y:m:d ', strtotime($_POST['pickupdate']));
+                $dropOffDate = Date('Y:m:d ', strtotime($_POST['dropoffdate']));
+                $pickUpTime =  Date('h:i A', strtotime($_POST['pickuptime']));
+                $dropOffTime = Date('h:i A', strtotime($_POST['dropofftime']));
+                $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
+                $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
+                $_SESSION['regiss'] = $regiss;    
+            }
+        ?>
         <section class="section">
-            <form class="FromSection" action="#" method="post">
-                <div class="sec1">
+            <div class="sec1">
                     <div class="Pick-up">
                         <h2>Pick-up</h2>
-                        <p>Kayaban-e-Saadi, Phase 7 Ext Def..</p>
-                        <p>Feb, 8 2021, 10:00 PM</p>
+                        <p><?php echo $_SESSION['regiss'][2]?></p>
+                        <p><?php echo $_SESSION['regiss'][4]?>, <?php echo $_SESSION['regiss'][5]?></p>
                         <div class="bookingType">
                             <h5>Booking Type:</h5>
                             <input type="radio" id="FullDayRental" value="FullDayRental">
@@ -139,8 +169,8 @@ session_start();
                     </div>
                     <div class="Drop-Off">
                         <h2>Drop-Off</h2>
-                        <p>Kayaban-e-Saadi, Phase 7 Ext Def..</p>
-                        <p>Feb, 8 2021, 10:00 PM</p>
+                        <p><?php echo $_SESSION['regiss'][1]?></p>
+                        <p><?php echo $_SESSION['regiss'][3]?>, <?php echo $_SESSION['regiss'][6]?></p>
                     </div>
                 </div>
                 <div class="sec2">
@@ -188,7 +218,20 @@ session_start();
                         <h3>PKR. 8,000</h3>
                     </div>
                 </div>
-            </form>
+                <?php 
+
+                echo '
+                <form method="post" action="book.php">
+                    <input type="hidden" name = "dropoffloc" value="'.$_SESSION['regiss'][1].'">
+                    <input type="hidden" name = "pickuploc" value="'.$_SESSION['regiss'][2].'">
+                    <input type="hidden" name = "pickupdate" value="'.$_SESSION['regiss'][4].'">
+                    <input type="hidden" name = "dropoffdate" value="'.$_SESSION['regiss'][3].'">
+                    <input type="hidden" name = "pickuptime" value="'.$_SESSION['regiss'][5].'">
+                    <input type="hidden" name = "dropofftime" value="'.$_SESSION['regiss'][6].'">
+                    <input type="hidden" name = "carid" value="'.$_SESSION['carid'].'">
+                    <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="book" value="details"></td>
+                </form>';
+                ?>
         </section>
         <!--INSERT CODE ABOVE-->
 
@@ -202,7 +245,6 @@ session_start();
                             <div class="copyright">&copy; 2021 GOGO Transport Services — A Rental Car Website made with
                                 passion by Hashtag Digitals</div>
                         </div>
-
                     </div>
                 </div>
             </div>
