@@ -67,7 +67,35 @@ unset($_SESSION['carid']);
         </div>
     </div>
     <!-- /PRELOADER -->
-
+    <!-- login  -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="" method="post">
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Email</span>
+              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Password</span>
+              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
+            <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+    <!-- login  -->
     <!-- WRAPPER -->
     <div class="wrapper">
 
@@ -89,7 +117,7 @@ unset($_SESSION['carid']);
                     if(!$_SESSION['login'])
                         echo '
                         <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
-                        <li><a class="loginSignup" href="#">LOGIN</a></li>';
+                        <li><a class="loginSignup" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOGIN</a></li>';
                        else
                     echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
                 ?>
