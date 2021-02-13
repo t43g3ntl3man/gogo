@@ -112,7 +112,7 @@ unset($_SESSION['carid']);
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
-            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
+            <img class="logo" src="assets/img/logo.png" alt="logo" />
             <ul>
                 <li><a class="active" href="index.php">Home</a></li>
                 <li><a href="aboutus.php">About us</a></li>

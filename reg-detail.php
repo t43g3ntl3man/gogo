@@ -56,6 +56,7 @@ session_start();
 </head>
 
 <body id="home" class="wide">
+
     <!-- PRELOADER -->
     <div id="preloader">
         <div id="preloader-status">
@@ -70,23 +71,55 @@ session_start();
         </div>
     </div>
     <!-- /PRELOADER -->
-
+    <!-- login  -->
+    <div class="modal loginPOPUP" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Email</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
+                        <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- login  -->
     <!-- WRAPPER -->
     <div class="wrapper">
 
         <!-- HEADER -->
-        <header class="header fixed">
-            <div class="header-wrapper">
-                <nav>
+        <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
-            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
+            <img class="logo" src="assets/img/logo.png" alt="logo" />
             <ul>
-                <li><a class="active" href="/">Home</a></li>
+                <li><a class="active" href="index.php">Home</a></li>
                 <li><a href="aboutus.php">About us</a></li>
-                <li><a href="vehicles.php">VAHICLES</a></li>
+                <li><a href="veh.php">VAHICLES</a></li>
                 <li><a href="#">FAQS</a></li>
                 <li><a href="#">HOT DEALS</a></li>
                 <li><a href="#">CONTACT</a></li>
@@ -94,18 +127,17 @@ session_start();
                     if(!$_SESSION['login'])
                         echo '
                         <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
-                        <li><a class="loginSignup" href="#">LOGIN</a></li>';
+                        <li><a class="loginSignup" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOGIN</a></li>';
                        else
                     echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
                 ?>
-                
-                
+
+
             </ul>
         </nav>
+        <!-- /HEADER -->
 
-        </header>
 
-        
 
         <!--CONTENT AREA-->
         <?php
@@ -151,11 +183,12 @@ session_start();
             }
         ?>
         <section class="section">
-            <div class="sec1">
+            <form class="FromSection" action="#" method="post">
+                <div class="sec1">
                     <div class="Pick-up">
                         <h2>Pick-up</h2>
-                        <p><?php echo $_SESSION['regiss'][2]?></p>
-                        <p><?php echo $_SESSION['regiss'][4]?>, <?php echo $_SESSION['regiss'][5]?></p>
+                        <p>Kayaban-e-Saadi, Phase 7 Ext Def..</p>
+                        <p>Feb, 8 2021, 10:00 PM</p>
                         <div class="bookingType">
                             <h5>Booking Type:</h5>
                             <input type="radio" id="FullDayRental" value="FullDayRental">
@@ -164,13 +197,13 @@ session_start();
                             <label for="ShortRental">Short Rental</label>
                         </div>
                         <div class="img">
-                            <img src="./car-370x220x1.jpg" alt="car" />
+                            <img src="assets/img/car.jpg" alt="car" />
                         </div>
                     </div>
                     <div class="Drop-Off">
                         <h2>Drop-Off</h2>
-                        <p><?php echo $_SESSION['regiss'][1]?></p>
-                        <p><?php echo $_SESSION['regiss'][3]?>, <?php echo $_SESSION['regiss'][6]?></p>
+                        <p>Kayaban-e-Saadi, Phase 7 Ext Def..</p>
+                        <p>Feb, 8 2021, 10:00 PM</p>
                     </div>
                 </div>
                 <div class="sec2">
@@ -218,20 +251,7 @@ session_start();
                         <h3>PKR. 8,000</h3>
                     </div>
                 </div>
-                <?php 
-
-                echo '
-                <form method="post" action="book.php">
-                    <input type="hidden" name = "dropoffloc" value="'.$_SESSION['regiss'][1].'">
-                    <input type="hidden" name = "pickuploc" value="'.$_SESSION['regiss'][2].'">
-                    <input type="hidden" name = "pickupdate" value="'.$_SESSION['regiss'][4].'">
-                    <input type="hidden" name = "dropoffdate" value="'.$_SESSION['regiss'][3].'">
-                    <input type="hidden" name = "pickuptime" value="'.$_SESSION['regiss'][5].'">
-                    <input type="hidden" name = "dropofftime" value="'.$_SESSION['regiss'][6].'">
-                    <input type="hidden" name = "carid" value="'.$_SESSION['carid'].'">
-                    <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="book" value="details"></td>
-                </form>';
-                ?>
+            </form>
         </section>
         <!--INSERT CODE ABOVE-->
 
