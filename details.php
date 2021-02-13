@@ -28,6 +28,7 @@ session_start();
 
     <!-- Theme CSS -->
     <link href="assets/css/theme.css" rel="stylesheet">
+    <link href="custom.css" rel="stylesheet">
 
     <!-- Head Libs -->
     <script src="assets/plugins/modernizr.custom.js"></script>
