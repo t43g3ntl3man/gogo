@@ -37,6 +37,7 @@ unset($_SESSION['carid']);
 
     <!-- Head Libs -->
     <script src="assets/plugins/modernizr.custom.js"></script>
+    <link href="./custon.css" rel="stylesheet"></link>
 
     <!--[if lt IE 9]>
     <script src="assets/plugins/iesupport/html5shiv.js"></script>
@@ -68,33 +69,39 @@ unset($_SESSION['carid']);
     </div>
     <!-- /PRELOADER -->
     <!-- login  -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="modal loginPOPUP" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Email</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
+                        <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
+                    </div>
+                </form>
+            </div>
         </div>
-        <form action="" method="post">
-          <div class="modal-body">
-            <div class="input-group mb-3">
-              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Email</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Password</span>
-              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
-            <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
     <!-- login  -->
     <!-- WRAPPER -->
     <div class="wrapper">
@@ -121,8 +128,8 @@ unset($_SESSION['carid']);
                        else
                     echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
                 ?>
-                
-                
+
+
             </ul>
         </nav>
         <!-- /HEADER -->
@@ -154,99 +161,99 @@ unset($_SESSION['carid']);
                 </button>
             </div>
             <section class="page-section">
-                    <h2 class="section-title wow fadeInDown" data-wow-offset="200" data-wow-delay="100ms">
-                        <small>All Discounts Just For You</small>
-                        <span>Get best rental deals</span>
-                    </h2>
-                    <!-- Search form -->
-                    <div class="row">
-                        <div class="col-sm-12 col-md-10 col-md-offset-1">
-                            <div class="form-search">
-                                <form action="vehicles.php" method="post">
-                                    <div class="form-title">
-                                        <i class="fa fa-globe"></i>
-                                        <h2>Search Rental Cars</h2>
-                                    </div>
-                                    <div class="row row-inputs">
-                                        <div class="container-fluid">
-                                            <div class="col-sm-6">
-                                                <div class="form-group has-icon has-label">
-                                                    <label style="color: #fff" for="formSearchUpLocation">Picking Up
-                                                        Location</label>
-                                                    <input type="text" class="form-control" name="formSearchUpLocation"
-                                                        placeholder="Airport or Anywhere">
-                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                </div>
+                <h2 class="section-title wow fadeInDown" data-wow-offset="200" data-wow-delay="100ms">
+                    <small>All Discounts Just For You</small>
+                    <span>Get best rental deals</span>
+                </h2>
+                <!-- Search form -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-10 col-md-offset-1">
+                        <div class="form-search">
+                            <form action="vehicles.php" method="post">
+                                <div class="form-title">
+                                    <i class="fa fa-globe"></i>
+                                    <h2>Search Rental Cars</h2>
+                                </div>
+                                <div class="row row-inputs">
+                                    <div class="container-fluid">
+                                        <div class="col-sm-6">
+                                            <div class="form-group has-icon has-label">
+                                                <label style="color: #fff" for="formSearchUpLocation">Picking Up
+                                                    Location</label>
+                                                <input type="text" class="form-control" name="formSearchUpLocation"
+                                                    placeholder="Airport or Anywhere">
+                                                <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group has-icon has-label">
-                                                    <label style="color: #fff" for="formSearchOffLocation">Dropping Off
-                                                        Location</label>
-                                                    <input type="text" class="form-control" name="formSearchOffLocation"
-                                                        placeholder="Airport or Anywhere">
-                                                    <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
-                                                </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group has-icon has-label">
+                                                <label style="color: #fff" for="formSearchOffLocation">Dropping Off
+                                                    Location</label>
+                                                <input type="text" class="form-control" name="formSearchOffLocation"
+                                                    placeholder="Airport or Anywhere">
+                                                <span class="form-control-icon"><i class="fa fa-map-marker"></i></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row row-inputs">
-                                        <div class="container-fluid">
-                                            <div class="col-sm-6">
-                                                <div class="form-group has-icon has-label">
-                                                    <label style="color: #fff" for="formSearchUpDate">Picking Up
-                                                        Date</label>
-                                                    <input type="date" class="form-control" name="formSearchUpDate"
-                                                        placeholder="m/d/y">
-                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                                </div>
+                                </div>
+                                <div class="row row-inputs">
+                                    <div class="container-fluid">
+                                        <div class="col-sm-6">
+                                            <div class="form-group has-icon has-label">
+                                                <label style="color: #fff" for="formSearchUpDate">Picking Up
+                                                    Date</label>
+                                                <input type="date" class="form-control" name="formSearchUpDate"
+                                                    placeholder="m/d/y">
+                                                <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group has-icon has-label">
-                                                    <label style="color: #fff" for="formSearchOffDate">Dropping Off
-                                                        Date</label>
-                                                    <input type="date" class="form-control" name="formSearchOffDate"
-                                                        placeholder="m/d/y">
-                                                    <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
-                                                </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group has-icon has-label">
+                                                <label style="color: #fff" for="formSearchOffDate">Dropping Off
+                                                    Date</label>
+                                                <input type="date" class="form-control" name="formSearchOffDate"
+                                                    placeholder="m/d/y">
+                                                <span class="form-control-icon"><i class="fa fa-calendar"></i></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row row-inputs">
-                                        <div class="container-fluid">
-                                            <div class="col-sm-6">
-                                                <div class="form-group has-icon has-label">
-                                                    <label style="color: #fff" for="formSearchUpDate">Picking Up
-                                                        Time</label>
-                                                    <input type="time" class="form-control" name="formSearchUpTime"
-                                                        placeholder="00:00">
-                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                                                </div>
+                                </div>
+                                <div class="row row-inputs">
+                                    <div class="container-fluid">
+                                        <div class="col-sm-6">
+                                            <div class="form-group has-icon has-label">
+                                                <label style="color: #fff" for="formSearchUpDate">Picking Up
+                                                    Time</label>
+                                                <input type="time" class="form-control" name="formSearchUpTime"
+                                                    placeholder="00:00">
+                                                <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                                             </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group has-icon has-label">
-                                                    <label style="color: #fff" for="formSearchOffDate">Dropping Off
-                                                        Time</label>
-                                                    <input type="time" class="form-control" name="formSearchOffTime"
-                                                        placeholder="00:00">
-                                                    <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
-                                                </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group has-icon has-label">
+                                                <label style="color: #fff" for="formSearchOffDate">Dropping Off
+                                                    Time</label>
+                                                <input type="time" class="form-control" name="formSearchOffTime"
+                                                    placeholder="00:00">
+                                                <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                                             </div>
                                         </div>
                                     </div>
-    
-                                    <div class="row row-submit">
-                                        <div class="container-fluid">
-                                            <div class="inner">
-                                                <a href="index.php"><i class="fa fa-minus-circle"></i></a>
-                                                <button type="submit" name="formSearchSubmit"
-                                                    class="btn btn-submit btn-theme pull-right">Find Car</button>
-                                            </div>
+                                </div>
+
+                                <div class="row row-submit">
+                                    <div class="container-fluid">
+                                        <div class="inner">
+                                            <a href="index.php"><i class="fa fa-minus-circle"></i></a>
+                                            <button type="submit" name="formSearchSubmit"
+                                                class="btn btn-submit btn-theme pull-right">Find Car</button>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
-                    </div>    
+                    </div>
+                </div>
             </section>
         </div>
 
