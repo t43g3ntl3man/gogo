@@ -8414,66 +8414,68 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-
-/* navbar  */
-
 * {
   padding: 0;
   margin: 0;
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-}
-
-nav {
+  }
+  
+  nav {
   font-family: Arial, Helvetica, sans-serif;
   background: #ee0000;
-  min-height: 80px;
+  height: 80px;
   width: 100%;
   z-index: 100;
   position: fixed;
-}
-
-.logo {
+  top: 0;
+  left: 0;
+  }
+  
+  .logo {
   width: 150px;
   margin: 20px;
-}
-
-nav ul {
+  }
+  
+  nav ul {
   float: right;
   margin-right: 20px;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
   display: inline-block;
   line-height: 80px;
   margin: 0 5px;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
   color: white;
   font-size: 17px;
   font-weight: bold;
   padding: 7px 13px;
   text-transform: uppercase;
   text-decoration: none;
-}
-nav ul li a.loginSignup{
+  }
+  
+  nav ul li a.loginSignup {
   background: white;
   color: #ee0000;
   border-radius: 5px;
   font-size: 12px;
-}
-nav ul li a.loginSignup:hover{
+  }
+  
+  nav ul li a.loginSignup:hover {
   color: black;
-}
-a.active,
-a:hover {
+  }
+  
+  a.active,
+  a:hover {
   color: black;
   transition: .5s;
-}
-
-.checkbtn {
+  }
+  
+  .checkbtn {
   font-size: 30px;
   color: white;
   float: right;
@@ -8481,99 +8483,151 @@ a:hover {
   margin-right: 40px;
   cursor: pointer;
   display: none;
-}
-
-#check {
+  }
+  
+  #check {
   display: none;
-}
-
-@media (max-width: 952px) {
-  .nav {
-      flex-direction: row-reverse;
   }
-
+  
+  @media (max-width: 952px) {
+  .nav {
+  flex-direction: row-reverse;
+  }
+  
   .logo {
-      width: 100px;
+  width: 100px;
   }
-
+  
   nav ul li a {
-      font-size: 16px;
+  font-size: 16px;
   }
-}
-
-@media (max-width: 858px) {
+  }
+  
+  @media (max-width: 858px) {
   .nav {
-      flex-direction: row-reverse;
+  flex-direction: row-reverse;
   }
-
+  
   .checkbtn {
-      display: block;
+  display: block;
   }
-
+  
   ul {
-      position: fixed;
-      width: 100%;
-      height: 100vh;
-      background: #ee0000;
-      top: 80px;
-      left: -100%;
-      text-align: center;
-      transition: all .5s;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #ee0000;
+  top: 80px;
+  left: -100%;
+  text-align: center;
+  transition: all .5s;
   }
-
+  
   nav ul li {
-      display: block;
-      margin: 50px 0;
-      line-height: 30px;
+  display: block;
+  margin: 50px 0;
+  line-height: 30px;
   }
-
+  
   nav ul li a {
-      font-size: 20px;
+  font-size: 20px;
   }
+  
   a:hover,
   a.active {
-      background: none;
-      color: black;
+  background: none;
+  color: black;
   }
-
+  
   #check:checked~ul {
-      left: 0;
+  left: 0;
   }
-}
-.carousel{
+  }
+  .body{
+  margin-top: 90px;
+  width: 100%;
+  min-height: calc(100vh - 90px);
+  }
+  .carousel{
   width: 100%;
   margin-top: -10px;
   height: 500px !important;
   position: absolute;
-}
-.carousel-inner{
+  }
+  .carousel-inner{
   height: 100vh;
-}
-.carousel-item img{
+  }
+  .carousel-item img{
   width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
-}
-.banner{
+  }
+  .banner{
   min-height: 100vh;
   position: relative;
-  top: 100px;
-}
-.banner .carousel{
-  z-index: 0;  
-}
-.banner .page-section{
+  }
+  .banner .carousel{
+  z-index: 0;
+  }
+  .banner .page-section{
   z-index: 10;  
   width: 100vw;
   margin-bottom: 20px;
-}
-.banner .page-section .row{
+  margin-top: 20px;
+  }
+  .banner .page-section .row{
   width: 100%;
-}
-.banner .page-section .row-inputs{
+  }
+  .banner .page-section .row-inputs{
   margin: 0 auto;
-}
-.banner .page-section .form-search{
+  }
+  .banner .page-section .form-search{
   background-color: rgba(0, 0, 0, 0.2);
-}
+  }
+  .FromSection{
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 20px;
+  }
+  .FromSection p, h2, h6, div, span, label, a{
+      margin: 0;
+      padding: 0;
+  }
+  .FromSection a{
+      color: blue !important;
+  }
+  .sec1{
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+  }
+  .sec2{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+  }
+  .sec2 div.rate{
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+  }
+  .sec2 div.radiobtn{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+  .sec2 div.radiobtn div{
+      margin-right: 20px;
+  }
+  @media screen and (max-width: 800px) {
+      .FromSection{
+          flex-direction: column;
+      }
+  }

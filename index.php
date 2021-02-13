@@ -37,7 +37,6 @@ unset($_SESSION['carid']);
 
     <!-- Head Libs -->
     <script src="assets/plugins/modernizr.custom.js"></script>
-    <link href="./custon.css" rel="stylesheet"></link>
 
     <!--[if lt IE 9]>
     <script src="assets/plugins/iesupport/html5shiv.js"></script>
