@@ -68,7 +68,7 @@ unset($_SESSION['carid']);
     </div>
     <!-- /PRELOADER -->
     <!-- login  -->
-    <div class="modal loginPOPUP" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -79,47 +79,42 @@ unset($_SESSION['carid']);
                 <form action="" method="post">
                     <div class="modal-body">
                         <div class="input-group mb-3">
-                            <span class="input-group-text"
-                                style="background-color: #ee0000; color: white; outline: none;"
-                                id="inputGroup-sizing-default">Email</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
+                            <label class="input-group-text" id="inputGroup-sizing-default" for="email">Email</label>
+                            <input type="text" class="form-control" aria-label="Sizing example input" id="email"
                                 aria-describedby="inputGroup-sizing-default">
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text"
-                                style="background-color: #ee0000; color: white; outline: none;"
-                                id="inputGroup-sizing-default">Password</span>
-                            <input type="password" class="form-control" aria-label="Sizing example input"
+                            <label class="input-group-text" id="inputGroup-sizing-default"
+                                for="password">Password</label>
+                            <input type="password" class="form-control" aria-label="Sizing example input" id="password"
                                 aria-describedby="inputGroup-sizing-default">
                         </div>
+                        <button class="btn btn-primary">LOGIN</button>
                     </div>
                     <div class="modal-footer">
-                        <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
-                        <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
+                        <a href="#">Don't have an account, Sign in</a>
+                        <a href="#">Forget Password</a>
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <!-- login  -->
-    <!-- WRAPPER -->
-    <div class="wrapper">
-
-        <!-- HEADER -->
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
-            </label>
-            <img class="logo" src="assets/img/logo.png" alt="logo" />
-            <ul>
-                <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="aboutus.php">About us</a></li>
-                <li><a href="veh.php">VAHICLES</a></li>
-                <li><a href="#">FAQS</a></li>
-                <li><a href="#">HOT DEALS</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <?php
+    <!-- HEADER -->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <img class="logo" src="assets/img/logo.png" alt="logo" />
+        <ul>
+            <li><a class="active" href="index.php">Home</a></li>
+            <li><a href="aboutus.php">About us</a></li>
+            <li><a href="veh.php">VAHICLES</a></li>
+            <li><a href="#">FAQS</a></li>
+            <li><a href="#">HOT DEALS</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <?php
                     if(!$_SESSION['login'])
                         echo '
                         <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
@@ -129,9 +124,11 @@ unset($_SESSION['carid']);
                 ?>
 
 
-            </ul>
-        </nav>
-        <!-- /HEADER -->
+        </ul>
+    </nav>
+    <!-- /HEADER -->
+    <!-- WRAPPER -->
+    <div class="wrapper">
         <div class="banner">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">

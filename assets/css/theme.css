@@ -8543,7 +8543,7 @@ input[type=number]::-webkit-outer-spin-button {
   left: 0;
   }
   }
-  .body{
+  .wrapper{
   margin-top: 90px;
   width: 100%;
   min-height: calc(100vh - 90px);
@@ -8630,4 +8630,53 @@ input[type=number]::-webkit-outer-spin-button {
       .FromSection{
           flex-direction: column;
       }
+  }
+
+  .modal-title{
+    color: red;
+    font-weight: bold;
+  }
+  .input-group{
+    height: 50px;
+  }
+  .input-group label{
+    color: #ee0000;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+  }
+
+  .modal-body button{
+    width: 100%;
+    background-color: #ee0000;
+    border: none;
+    outline: none;
+    font-weight: bold;
+  }
+  .modal-body button:hover{
+    background-color: #bd0000;
+  }
+  .modal-footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .modal-footer a{
+    color: red;
+  }
+  .packagesSection{
+    min-height: 90vh;
+  }
+  .packagesSection h5{
+    font-weight: bold;
+  }
+  .packagesSection a{
+    background-color: #ee0000;
+    border: none;
+    width: 100%;
+  }
+  .packagesSection a:hover{
+    background-color: #bd0000;
+    border: none;
+    color: white;
   }
