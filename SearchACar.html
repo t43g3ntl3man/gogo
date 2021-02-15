@@ -12,8 +12,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="./assets/css/theme.css">
     <style>
-        
-
         .searchACar {
             width: 100%;
             margin-top: 80px;
@@ -97,18 +95,33 @@
         .carBox .options {
             display: flex;
             width: 100%;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        .carBox .options div {
+        .carBox .options form {
             width: 100%;
             margin: 10px;
             font-weight: 500;
             color: #ee0000;
             text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
         }
-
+        .carBox .options form div{
+            width: 100%;
+        }
+        .carBox .options form button{
+            color: white;
+            background-color: #ee0000;
+            outline: none;
+            border: 1px solid #ee0000;
+        }
+        .carBox .options form button:hover{
+            box-shadow: 1px 1px 5px gray;
+        }
         .carCard {
             display: flex;
             justify-content: space-evenly;
@@ -273,21 +286,18 @@
         </div> -->
         <div class="carBox">
             <div class="options container">
-                <div>
-                    <form action="#" method="post">
+                <form action="#" method="post">
+                    <div>
                         <label for="type">Vehicle Type</label>
                         <select class="form-select" id="type" aria-label="Default select example">
-                            <button type="submit"></button>
-                            <option selected>All</option></button>
-                            <button type="submit"></button>
-                            <option value="1">One</option></button>
-                            <button type="submit"></button>
-                            <option value="2">Two</option></button>
-                            <button type="submit"></button>
-                            <option value="3">Three</option></button>
+                            <option selected>All</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
                         </select>
-                    </form>
-                </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Update</button>
+                </form>
             </div>
             <div class="carCard">
                 <div class="carImg">
