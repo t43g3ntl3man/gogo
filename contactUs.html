@@ -34,9 +34,9 @@
     <script src="assets/plugins/modernizr.custom.js"></script>
 
     <!--[if lt IE 9]>
-    <script src="assets/plugins/iesupport/html5shiv.js"></script>
-    <script src="assets/plugins/iesupport/respond.min.js"></script>
-    <![endif]-->
+<script src="assets/plugins/iesupport/html5shiv.js"></script>
+<script src="assets/plugins/iesupport/respond.min.js"></script>
+<![endif]-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
@@ -45,66 +45,8 @@
     <script src="asset/js/index.js"></script>
 
     <style>
-        .packagesSection {
-            min-height: 90vh;
-            padding: 20px;
-        }
-
-        .card h5 {
-            color: white;
-            font-size: 20px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .card a {
-            background-color: black;
-            border: 1px solid #ee0000;
-            width: calc(100%);
-
-        }
-        
-        .card a:hover {
-            border: 1px solid white !important;
-            background-color: black;
-            border: none;
-            color: white;
-        }
-
-        .card .img {
-            width: 100%;
-        }
-
-        .card .img img {
-            width: 100%;
-        }
-
-        .card .content {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 10px;
-            color: white;
-            width: calc(100%);
-            height: calc(100%);
-            display: none;
-            transition: ease-in .3s;
-        }
-        .card:hover .content{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-color: #ee0000de;
-        }
-        .card .card-text{
-            width: 100%;
-        }
-        .card .card-text span{
-            display: flex;
-            justify-content: space-between;
-            width: 100%;
+        .contact{
+            min-height: 80vh;
         }
     </style>
 </head>
@@ -172,13 +114,13 @@
             <li><a href="#">HOT DEALS</a></li>
             <li><a href="#">CONTACT</a></li>
             <?php
-                    if(!$_SESSION['login'])
-                        echo '
-                        <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
-                        <li><a class="loginSignup" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOGIN</a></li>';
-                       else
-                    echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
-                ?>
+if(!$_SESSION['login'])
+echo '
+<li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
+<li><a class="loginSignup" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOGIN</a></li>';
+else
+echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
+?>
 
 
         </ul>
@@ -186,93 +128,120 @@
     <!-- /HEADER -->
     <!-- WRAPPER -->
     <div class="wrapper">
-        <div class="packagesSection container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img">
-                                <img src="./assets/img/poster.jpg">
-                            </div>
-                            <div class="content">
-                                <h5 class="card-title">Karachi</h5>
-                                <p class="card-text">
-                                    <span><b>Date: </b>12/10/2021</span>
-                                    <span><b>No. of people: </b>10</span>
-                                    <span><b>Amount: </b>Rs.1000</span>
-                                </p>
-                                <a href="#" class="btn btn-primary">GO</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img">
-                                <img src="./assets/img/poster.jpg">
-                            </div>
-                            <div class="content">
-                                <h5 class="card-title">Karachi</h5>
-                                <p class="card-text">
-                                    <span><b>Date: </b>12/10/2021</span>
-                                    <span><b>No. of people: </b>10</span>
-                                    <span><b>Amount: </b>Rs.1000</span>
-                                </p>
-                                <a href="#" class="btn btn-primary">GO</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img">
-                                <img src="./assets/img/poster.jpg">
-                            </div>
-                            <div class="content">
-                                <h5 class="card-title">Karachi</h5>
-                                <p class="card-text">
-                                    <span><b>Date: </b>12/10/2021</span>
-                                    <span><b>No. of people: </b>10</span>
-                                    <span><b>Amount: </b>Rs.1000</span>
-                                </p>
-                                <a href="#" class="btn btn-primary">GO</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="img">
-                                <img src="./assets/img/poster.jpg">
-                            </div>
-                            <div class="content">
-                                <h5 class="card-title">Karachi</h5>
-                                <p class="card-text">
-                                    <span><b>Date: </b>12/10/2021</span>
-                                    <span><b>No. of people: </b>10</span>
-                                    <span><b>Amount: </b>Rs.1000</span>
-                                </p>
-                                <a href="#" class="btn btn-primary">GO</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-        <!-- /CONTENT AREA -->
+        <section class="page-section contact dark">
+            <div class="container">
+
+                <!-- Get in touch -->
+
+                <h2 class="section-title wow fadeInDown" data-wow-offset="200" data-wow-delay="100ms">
+                    <small>Feel Free to Say Hello!</small>
+                    <span>Get in Touch With Us</span>
+                </h2>
+
+                <div class="row">
+                    <div class="col-md-6 wow fadeInLeft" data-wow-offset="200" data-wow-delay="200ms">
+                        <!-- Contact form -->
+                        <form name="contact-form" method="post" action="#" class="contact-form" id="contact-form">
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <div class="outer required">
+                                        <div class="form-group af-inner has-icon">
+                                            <label class="sr-only" for="name">Name</label>
+                                            <input type="text" name="name" id="name" placeholder="Name" value=""
+                                                size="30" data-toggle="tooltip" title="Name is required"
+                                                class="form-control placeholder" />
+                                            <span class="form-control-icon"><i class="fa fa-user"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-6">
+
+                                    <div class="outer required">
+                                        <div class="form-group af-inner has-icon">
+                                            <label class="sr-only" for="email">Email</label>
+                                            <input type="text" name="email" id="email" placeholder="Email" value=""
+                                                size="30" data-toggle="tooltip" title="Email is required"
+                                                class="form-control placeholder" />
+                                            <span class="form-control-icon"><i class="fa fa-envelope"></i></span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="outer required">
+                                <div class="form-group af-inner has-icon">
+                                    <label class="sr-only" for="subject">Subject</label>
+                                    <input type="text" name="subject" id="subject" placeholder="Subject" value=""
+                                        size="30" data-toggle="tooltip" title="Subject is required"
+                                        class="form-control placeholder" />
+                                    <span class="form-control-icon"><i class="fa fa-bars"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="form-group af-inner has-icon">
+                                <label class="sr-only" for="input-message">Message</label>
+                                <textarea name="message" id="input-message" placeholder="Message" rows="4" cols="50"
+                                    data-toggle="tooltip" title="Message is required"
+                                    class="form-control placeholder"></textarea>
+                                <span class="form-control-icon"><i class="fa fa-bars"></i></span>
+                            </div>
+
+                            <div class="outer required">
+                                <div class="form-group af-inner">
+                                    <input type="submit" name="submit"
+                                        class="form-button form-button-submit btn btn-block btn-theme ripple-effect btn-theme-dark"
+                                        id="submit_btn" value="Send message" />
+                                </div>
+                            </div>
+
+                        </form>
+                        <!-- /Contact form -->
+                    </div>
+                    <div class="col-md-6 wow fadeInRight" data-wow-offset="200" data-wow-delay="200ms">
+
+                        <ul class="media-list contact-list">
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-home"></i></div>
+                                <div class="media-body">Adress: Suparco Rd, University Of Karachi</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa"></i></div>
+                                <div class="media-body">Karachi, Sindh</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-phone"></i></div>
+                                <div class="media-body">Support Phone: 0300 2438084</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-envelope"></i></div>
+                                <div class="media-body">E mails: info@example.com</div>
+                            </li>
+                            <li class="media">
+                                <div class="media-left"><i class="fa fa-clock-o"></i></div>
+                                <div class="media-body">24+ hours available</div>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- /Get in touch -->
+
+            </div>
+        </section>
 
         <!-- FOOTER -->
         <footer class="footer">
             <div class="footer-meta">
                 <div class="container">
                     <div class="row">
-
                         <div class="col-sm-12">
-
                             <div class="copyright">&copy; 2021 GOGO Transport Services — A Rental Car Website made with
                                 passion by Hashtag Digitals</div>
                         </div>
@@ -310,8 +279,8 @@
         integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
         crossorigin="anonymous"></script>
     <script>
-    // WOW - animated content
-    //new WOW().init();
+// WOW - animated content
+//new WOW().init();
     </script>
     <script src="assets/plugins/swiper/js/swiper.jquery.min.js"></script>
     <script src="assets/plugins/datetimepicker/js/moment-with-locales.min.js"></script>

@@ -8619,19 +8619,3 @@ input[type=number]::-webkit-outer-spin-button {
   .modal-footer a{
     color: red;
   }
-  .packagesSection{
-    min-height: 90vh;
-  }
-  .packagesSection h5{
-    font-weight: bold;
-  }
-  .packagesSection a{
-    background-color: #ee0000;
-    border: none;
-    width: 100%;
-  }
-  .packagesSection a:hover{
-    background-color: #bd0000;
-    border: none;
-    color: white;
-  }

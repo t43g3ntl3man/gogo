@@ -40,13 +40,75 @@ session_start();
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <style>
-        .indent-1 {
-            float: left;
+        .regForm{
+            margin: 20px !important;
+        }
+        .FromSection{
+            width: 100%;
+            min-height: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
         }
 
-        .indent-1 section {
-            width: 50%;
-            float: left;
+        .FromSection a {
+            color: #ee0000 !important;
+        }
+
+        .sec1 {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex: 2;
+        }
+
+        .sec2 {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .regForm .btn{
+            background-color: #ee0000;
+            float: right;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .regForm button:hover{
+            color: white;
+            box-shadow: 1px 1px 5px gray;
+        }
+        .sec2 div.rate {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sec2 div.radiobtn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sec2 div.radiobtn div {
+            margin-right: 20px;
+        }
+
+        @media screen and (max-width: 900px) {
+            .FromSection{
+                flex-direction: column;
+            }
+
+            .FromSection .sec1 {
+                flex-direction: column;
+            }
+            .FromSection .sec2 {
+                width: 100%;
+            }
         }
     </style>
     <script
