@@ -37,449 +37,402 @@ if (isset($_POST["findcar"]))
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/theme.css">
+    <style>
+        
 
-    <title>Gogo Transport</title>
+        .searchACar {
+            width: 100%;
+            margin-top: 80px;
+        }
 
-    <!-- Favicon -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+        .searchACarDiv {
+            padding: 10px;
+            background-color: #f2f2f2;
+        }
 
-    <!-- CSS Global -->
-    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="assets/plugins/fontawesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="assets/plugins/prettyphoto/css/prettyPhoto.css" rel="stylesheet">
-    <link href="assets/plugins/owl-carousel2/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/plugins/owl-carousel2/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="assets/plugins/animate/animate.min.css" rel="stylesheet">
-    <link href="assets/plugins/swiper/css/swiper.min.css" rel="stylesheet">
-    <link href="assets/plugins/datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        .searchACarForm {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+        }
 
-    <!-- Theme CSS -->
-    <link href="assets/css/theme.css" rel="stylesheet">
+        .searchACarForm .fieldBox {
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 1px;
+            background-color: white;
+        }
 
-    <!-- Head Libs -->
-    <script src="assets/plugins/modernizr.custom.js"></script>
+        .searchACarForm .fieldBox.btn {
+            background-color: #ee0000;
+            color: white;
+        }
 
-    <!--[if lt IE 9]>
-    <script src="assets/plugins/iesupport/html5shiv.js"></script>
-    <script src="assets/plugins/iesupport/respond.min.js"></script>
-    <![endif]-->
+        .searchACarForm .fieldBox.btn input {
+            color: white;
+            font-weight: bold;
+        }
+
+        .searchACarForm .fieldBox label,
+        input {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            font-size: 16px;
+        }
+
+        @media (max-width: 1000px) {
+            .searchACarForm {
+                flex-direction: column;
+            }
+
+            .searchACarForm .fieldBox {
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
+                flex-wrap: wrap;
+                width: 100%;
+                margin: 1px;
+                background-color: white;
+            }
+
+            .searchACarForm .fieldBox.btn {
+                background-color: #ee0000;
+                color: white;
+            }
+
+            .searchACarForm .fieldBox.btn input {
+                color: white;
+                font-weight: bold;
+            }
+
+            .searchACarForm .fieldBox label,
+            input {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                font-size: 16px;
+            }
+        }
+
+        .carBox .options {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carBox .options div {
+            width: 100%;
+            margin: 10px;
+            font-weight: 500;
+            color: #ee0000;
+            text-transform: uppercase;
+        }
+
+        .carCard {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+            padding: 20px;
+            border-bottom: 1px solid #f2f2f2;
+        }
+
+        .carCard .carImg {
+            flex: 2;
+        }
+
+        .carCard img {
+            min-width: 100%;
+        }
+
+        .carCard .carDetail {
+            flex: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .carCard .carDetail div {
+            width: 100%;
+        }
+
+        .carContent {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .carContent .carFeatures {
+            /* display: flex; */
+            /* justify-content: center; */
+            /* width: 100%; */
+        }
+
+        .carContent .carFeatures tr td {
+            margin: 10px;
+            padding: 4px;
+            width: auto;
+        }
+
+        .carContent .carFeatures tr i {
+            color: #ee0000;
+        }
+
+        .carContent h4 {
+            color: #ee0000;
+            font-weight: bold;
+            font-size: 30px;
+
+        }
+
+        .carCard .carDetail div button {
+            width: 100%;
+            background-color: #ee0000;
+            border: none;
+        }
+
+        .carCard .carDetail div button:hover {
+            box-shadow: 0 3px 5px #a3a3a3;
+        }
+
+        @media (max-width: 800px) {
+            .carCard {
+                flex-direction: column;
+            }
+
+            .carCard .carImg {
+                flex: 1;
+            }
+
+            .carCard .carDetail {
+                width: 100%;
+            }
+
+            .carContent {
+                flex-direction: row;
+            }
+
+            .carContent .carFeatures tr td {
+                margin: 10px;
+                padding: 4px;
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .carContent {
+                flex-direction: column;
+                /* justify-content: space-evenly; */
+                margin-bottom: 10px;
+            }
+
+            .carContent .carFeatures tr td {
+                margin: 10px;
+                padding: 4px;
+                width: 200px;
+            }
+        }
+    </style>
 </head>
-<body id="home" class="wide">
-<!-- PRELOADER -->
-<div id="preloader">
-    <div id="preloader-status">
-        <div class="spinner">
-            <div class="rect1"></div>
-            <div class="rect2"></div>
-            <div class="rect3"></div>
-            <div class="rect4"></div>
-            <div class="rect5"></div>
-        </div>
-        <div id="preloader-title">Loading</div>
-    </div>
-</div>
-<!-- /PRELOADER -->
 
-<!-- WRAPPER -->
-<div class="wrapper">
+<body>
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <img class="logo" src="./assets/img/logo.png" alt="logo" />
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="./aboutus.php">About us</a></li>
+            <li><a href="./vehicles.php">VAHICLES</a></li>
+            <li><a href="#">FAQS</a></li>
+            <li><a href="#">HOT DEALS</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <li><a class="loginSignup" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOGIN</a></li>
+            <li><a class="loginSignup" href="./signup.php">SIGNUP</a></li>
+        </ul>
+    </nav>
 
-    <!-- HEADER -->
-    <header class="header fixed">
-        <div class="header-wrapper">
-            <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
-            </label>
-            <img class="logo" src="assets/img/logo-rentit.jpg" alt="logo" />
-            <ul>
-                <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="vehicles.php">VAHICLES</a></li>
-                <li><a href="#">FAQS</a></li>
-                <li><a href="#">HOT DEALS</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <?php
-                    if(!$_SESSION['login'])
-                        echo '
-                        <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
-                        <li><a class="loginSignup" href="#">LOGIN</a></li>';
-                       else
-                    echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
-                ?>
-            </ul>
-        </nav>
-        </div>
-
-    </header>
-    <!-- /HEADER -->
-
-    <!-- CONTENT AREA -->
-    <div class="content-area">
-
-        <!-- BREADCRUMBS -->
-        <section class="page-section breadcrumbs text-right">
-            <div class="container">
-                <div class="page-header">
-                    <h1><?php echo $_SESSION["findcartype"];?></h1>
+    <section class="searchACar">
+        <!-- <div class="searchACarDiv">
+            <form action="" class="container searchACarForm">
+                <div class="fieldBox">
+                    <input type="text" id="location" placeholder="Enter Pick-Up Location">
+                    <label for="location" class="field"><i class="fas fa-map-marker-alt"></i></label>
                 </div>
-                
-            </div>
-        </section>
-        <!-- /BREADCRUMBS -->
-
-        <!-- PAGE WITH SIDEBAR -->
-        <section class="page-section with-sidebar sub-page">
-            <div class="container">
-                <div class="row">
-                    <!-- CONTENT -->
-                    <div class="col-md-9 content car-listing" id="content">
-
-                        <!-- Car Listing -->                    
-                        <?php include("connection.php")?>
-                        <?php
-                            if(isset($_POST['formSearchSubmit']))
-                            {
-                                if($_SESSION["findcartype"]!="All")
-                                {
-                                    $query = "SELECT id, name, model, fuel_type, engine_type FROM cars where car_type = '".$_SESSION['findcartype']."'";
-
-                                    $result = $con->query($query);
-                                    $counter = 0;
-                                    while($row = $result -> fetch_assoc())
-                                    {
-                                        $carid = $row['id'];
-                                        $dropOffLoc =  $_POST['formSearchOffLocation'];
-                                        $pickUpLoc = $_POST['formSearchUpLocation'];
-                                        $pickUpDate = $_POST['formSearchUpDate'];
-                                        $dropOffDate = $_POST['formSearchOffDate'];
-                                        $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
-                                        $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
-                                        $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
-                                        $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
-                                        $_SESSION['regiss'] = $regiss;
-
-                                        echo '
-                                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                                            <div class="media">
-                                                <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars car-370x220x1.jpg">
-                                                    <img src="assets/img/preview/cars/car-370x220x1.jpg" alt=""/>
-                                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                </a>
-                                            </div>
-
-                                            <div class="caption">
-                                                <div class="rating">
-                                                    <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                                </div>
-                                                <h4 class="caption-title">'. $row["name"] .'</h4>
-                                                <h5 class="caption-title-sub">Start from '.$_SESSION["priceforcartype"].'RS/per a day</h5>
-                                                  
-                                                <table class="table">
-                                                    <tr>
-                                                        <td><i class="fa fa-car"></i>'. $row["model"] .'</td>
-                                                        <td><i class="fa fa-dashboard"></i>'. $row["fuel_type"] .'</td>
-                                                        <td><i class="fa fa-cog"></i>'. $row["engine_type"] .'</td>
-                                                         <form method="post" action="reg-detail.php">
-                                                            
-                                                               
-                                                            <input type="hidden" name = "formSearchOffLocation" value="'.$_SESSION['regiss'][1].'">
-                                                            <input type="hidden" name = "formSearchUpLocation" value="'.$_SESSION['regiss'][2].'">
-                                                            <input type="hidden" name = "formSearchUpDate" value="'.$_SESSION['regiss'][4].'">
-                                                            <input type="hidden" name = "formSearchOffDate" value="'.$_SESSION['regiss'][3].'">
-                                                            <input type="hidden" name = "formSearchUpTime" value="'.$_SESSION['regiss'][5].'">
-                                                            <input type="hidden" name = "formSearchOffTime" value="'.$_SESSION['regiss'][6].'">
-                                                            <input type="hidden" name = "carid" value="'.$carid.'">
-                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="formsubmitted" value="details"></td>
-                                                        </form>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>';
-                                    }
-                                }
-                                else
-                                {
-                                    $query = "SELECT id, name, model, fuel_type, engine_type FROM cars";
-                                    $result = $con->query($query);
-                                    $counter = 0;
-                                    while($row = $result -> fetch_assoc())
-                                    {
-                                        $_SESSION['carid'] = $row['id'];
-                                        $carid = $row['id'];
-                                        $dropOffLoc =  $_POST['formSearchOffLocation'];
-                                        $pickUpLoc = $_POST['formSearchUpLocation'];
-                                        $pickUpDate = $_POST['formSearchUpDate'];
-                                        $dropOffDate = $_POST['formSearchOffDate'];
-                                        $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
-                                        $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
-                                        $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
-                                        $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
-                                        $_SESSION['regiss'] = $regiss;
-                                        echo '
-                                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                                            <div class="media">
-                                                <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars car-370x220x1.jpg">
-                                                    <img src="assets/img/preview/cars/car-370x220x1.jpg" alt=""/>
-                                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                </a>
-                                            </div>
-
-                                            <div class="caption">
-                                                <div class="rating">
-                                                    <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                                </div>
-                                                <h4 class="caption-title">'. $row["name"] .'</h4>
-                                                <h5 class="caption-title-sub">Start from '.$_SESSION["priceforcartype"].'RS/per a day</h5>
-                                                  
-                                                <table class="table">
-                                                    <tr>
-                                                        <td><i class="fa fa-car"></i>'. $row["model"] .'</td>
-                                                        <td><i class="fa fa-dashboard"></i>'. $row["fuel_type"] .'</td>
-                                                        <td><i class="fa fa-cog"></i>'. $row["engine_type"] .'</td>
-                                                        <form method="post" action="reg-detail.php">
-                                                            
-                                                            <input type="hidden" name = "formSearchOffLocation" value="'.$_SESSION['regiss'][1].'">
-                                                            <input type="hidden" name = "formSearchUpLocation" value="'.$_SESSION['regiss'][2].'">
-                                                            <input type="hidden" name = "formSearchUpDate" value="'.$_SESSION['regiss'][4].'">
-                                                            <input type="hidden" name = "formSearchOffDate" value="'.$_SESSION['regiss'][3].'">
-                                                            <input type="hidden" name = "formSearchUpTime" value="'.$_SESSION['regiss'][5].'">
-                                                            <input type="hidden" name = "formSearchOffTime" value="'.$_SESSION['regiss'][6].'">
-                                                            <input type="hidden" name = "carid" value="'.$carid.'">
-                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="formsubmitted" value="'.$carid.'"></td>
-                                                        </form>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>';
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if($_SESSION["findcartype"]!="All")
-                                {
-                                    $query = "SELECT id, name, model, fuel_type, engine_type FROM cars where car_type = '".$_SESSION['findcartype']."'";
-
-                                    $result = $con->query($query);
-                                    $counter = 0;
-                                    while($row = $result -> fetch_assoc())
-                                    {
-                                        $carid = $row['id'];
-                                        $_SESSION['carid'] = $carid;
-                                        echo '
-                                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                                            <div class="media">
-                                                <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars car-370x220x1.jpg">
-                                                    <img src="assets/img/preview/cars/car-370x220x1.jpg" alt=""/>
-                                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                </a>
-                                            </div>
-                                            <div class="caption">
-                                                <div class="rating">
-                                                    <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                                </div>
-                                                <h4 class="caption-title">'. $row["name"] .'</h4>
-                                                <h5 class="caption-title-sub">Start from '.$_SESSION["priceforcartype"].'RS/per a day</h5>
-                                                  
-                                                <table class="table">
-                                                    <tr>
-                                                        <td><i class="fa fa-car"></i>'. $row["model"] .'</td>
-                                                        <td><i class="fa fa-dashboard"></i>'. $row["fuel_type"] .'</td>
-                                                        <td><i class="fa fa-cog"></i>'. $row["engine_type"] .'</td>
-                                                        <form method="post" action="details.php">
-                                                             
-                                                            <input type="hidden" name = "carid" value="'.$carid.'">
-                                                            
-                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="details" value="'.$_row['id'].'"></td>
-                                                        </form>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>';
-                                    }
-                                }
-                                else
-                                {
-                                    $query = "SELECT id, name, model, fuel_type, engine_type FROM cars";
-                                    $result = $con->query($query);
-                                    $counter = 0;
-                                    while($row = $result -> fetch_assoc())
-                                    {
-                                        $carid = $row['id'];
-                                        $_SESSION['carid'] = $carid;
-                                        echo '
-                                        <div class="thumbnail no-border no-padding thumbnail-car-card clearfix">
-                                            <div class="media">
-                                                <a class="media-link" data-gal="prettyPhoto" href="assets/img/preview/cars car-370x220x1.jpg">
-                                                   <img src="assets/img/preview/cars/car-370x220x1.jpg" alt=""/>
-                                                    <span class="icon-view"><strong><i class="fa fa-eye"></i></strong></span>
-                                                 </a>
-                                            </div>
-                                            <div class="caption">
-                                                <div class="rating">
-                                                    <span class="star"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span><!--
-                                                    --><span class="star active"></span>
-                                                </div>
-                                                <h4 class="caption-title">'. $row["name"] .'</h4>
-                                                <h5 class="caption-title-sub">Start from '.$_SESSION["priceforcartype"].'RS/per a day</h5>
-                                                <table class="table">
-                                                    <tr>
-                                                        <td><i class="fa fa-car"></i>'. $row["model"] .'</td>
-                                                        <td><i class="fa fa-dashboard"></i>'. $row["fuel_type"] .'</td>
-                                                        <td><i class="fa fa-cog"></i>'. $row["engine_type"] .'</td>
-                                                        <form method="post" action="details.php">
-                                                            
-                                                            <input type="hidden" name=carid value="'.$carid.'">
-                                                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="details" value="'.$_SESSION['carid'].'"></td>
-                                                        </form>
-                                                    </tr>
-                                                </table>
-                                           </div>
-                                        </div>';
-                                    }
-                                }
-                            }
-                        ?>
-                        <!-- /Car Listing -->
-
-                        <!-- Pagination -->
-                        
-                        <!-- /Pagination -->
-
-                    </div>
-                    <!-- /CONTENT -->
-
-                    <!-- SIDEBAR -->
-                    <aside class="col-md-3 sidebar" id="sidebar" style="margin-top: 65px">
-                        <!-- widget -->
-                        <div class="widget shadow widget-find-car">
-                            <h4 class="widget-title">Find Best Rental Car</h4>
-                            <div class="widget-content">
-                                <!-- Search form -->
-                                <div class="form-search light">
-                                    <form method="post", action="vehicles.php">
-
-                                       
-
-                                       
-
-                                        <div class="form-group selectpicker-wrapper">
-                                            <label>Select Type</label>
-                                            <select class="selectpicker input-price" data-live-search="true" data-width="100%" data-toggle="tooltip" name="cartype" title="Select">
-                                                <option>All</option>
-                                                <option value="Economic">Economic</option>
-                                                <option value="Luxurious">Luxurious</option>
-                                                <option value="Executive">Executive</option>
-                                                <option value="Wagon">Wagon</option>
-                                                <option value="SUV">SUVs</option>
-                                            </select>
-                                        </div>
-
-                                        <button type="submit" id="formSearchSubmit3" class="btn btn-submit btn-theme btn-theme-dark btn-block" name="findcar">Find Car</button>
-
-                                    </form>
-                                </div>
-                                <!-- /Search form -->
-                            </div>
+                <div class="fieldBox">
+                    <input type="date" id="date" value="12/2/2021">
+                </div>
+                <div class="fieldBox">
+                    <input type="time" id="time">
+                </div>
+                <div class="fieldBox">
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="fullDay">
+                            <label class="form-check-label" for="fullDay">
+                                Full Day
+                            </label>
                         </div>
-                        <!-- /widget -->
-                        <!-- widget price filter -->
-                        
-                        <!-- /widget testimonials -->
-                        <!-- widget helping center -->
-                       
-                        <!-- /widget helping center -->
-                    </aside>
-                    <!-- /SIDEBAR -->
-
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="shortRental">
+                            <label class="form-check-label" for="shortRental">
+                                Short Rental
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <!-- /PAGE WITH SIDEBAR -->
-
-        <!-- PAGE -->
-        
-        <!-- /PAGE -->
-
-    </div>
-    <!-- /CONTENT AREA -->
-
-    <!-- FOOTER -->
-<footer class="footer">
-        <div class="footer-meta">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-sm-12">
-                        
-                        <div class="copyright">&copy; 2021 GOGO Transport Services — A Rental Car Website made with passion by Hashtag Digitals</div>
+                <div class="fieldBox btn">
+                    <input type="submit" value="BOOK NOW">
+                </div>
+            </form>
+        </div> -->
+        <div class="carBox">
+        <!-- Car Listing -->                    
+        <?php include("connection.php")?>
+        <?php
+        if(isset($_POST['formSearchSubmit']))
+        {
+            $query = "SELECT id, name, model, fuel_type, engine_type FROM cars";
+            $result = $con->query($query);
+            while($row = $result -> fetch_assoc())
+            {
+                $carid = $row['id'];
+                $dropOffLoc =  $_POST['formSearchOffLocation'];
+                $pickUpLoc = $_POST['formSearchUpLocation'];
+                $pickUpDate = $_POST['formSearchUpDate'];
+                $dropOffDate = $_POST['formSearchOffDate'];
+                $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
+                $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
+                $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
+                $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
+                $_SESSION['regiss'] = $regiss;
+                echo '
+                <div class="carCard">
+                    <div class="carImg">
+                        <img src="assets/img/car.jpg" alt="car">
                     </div>
 
+                    <div class="carDetail">
+                        <div class="carContent">
+                            <div>
+                                <h4>'.$row['name'].'</h4>
+                                <table class="carFeatures">
+                                    <tr>
+                                        <td><i class="fas fa-car"></i></td>
+                                        <td>'.$row['model'].'</td>
+                                        <td><i class="fas fa-tint"></i></td>
+                                        <td>Air Cond.</td>
+                                        <td><i class="fas fa-wheelchair"></i></td>
+                                        <td>4 Seats</td>
+                                    </tr>
+                                    <tr>
+                                        <td><i class="fas fa-door-open"></i></td>
+                                        <td>4 Door</td>
+                                        <td><i class="fas fa-magic"></i></td>
+                                        <td>'.$row['engine_type'].'</td>
+                                        <td><i class="fas fa-gas-pump"></i></td>
+                                        <td>'.$row['fuel_type'].'</td>
+                                    </tr>
+                                 </table>
+                                            
+                            </div>
+                            <div>
+                                <h4>3,700 PKR/day</h4>
+                            </div>
+                                        
+                        </div>
+                        <div class="carBtn">
+                        
+                            
+                        
+                    </div>
                 </div>
+            </div>  
+            <form method="post" action="reg-detail.php">                                                            
+                            <input type="hidden" name = "formSearchOffLocation" value="'.$_SESSION['regiss'][1].'">
+                            <input type="hidden" name = "formSearchUpLocation" value="'.$_SESSION['regiss'][2].'">
+                            <input type="hidden" name = "formSearchUpDate" value="'.$_SESSION['regiss'][4].'">
+                            <input type="hidden" name = "formSearchOffDate" value="'.$_SESSION['regiss'][3].'">
+                            <input type="hidden" name = "formSearchUpTime" value="'.$_SESSION['regiss'][5].'">
+                            <input type="hidden" name = "formSearchOffTime" value="'.$_SESSION['regiss'][6].'">
+                            <input type="hidden" name = "carid" value="'.$carid.'">
+                            <td class="buttons"><input class="btn btn-theme btn-block btn-theme-dark" type="submit" name="formsubmitted" value="Book"></td>
+                        </form>
+                        </tr>
+                        </table>
+                    </div>
+                </div>';
+            }
+        }
+        ?>
+        </div>
+    </section>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="./index.php" method="post">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Email</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
+                        <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
+                    </div>
+                </form>
             </div>
         </div>
-    </footer>
-    <!-- /FOOTER -->
+    </div>
 
-    <div id="to-top" class="to-top"><i class="fa fa-angle-up"></i></div>
-
-</div>
-<!-- /WRAPPER -->
-
-<!-- JS Global -->
-<script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
-<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
-<script src="assets/plugins/superfish/js/superfish.min.js"></script>
-<script src="assets/plugins/prettyphoto/js/jquery.prettyPhoto.js"></script>
-<script src="assets/plugins/owl-carousel2/owl.carousel.min.js"></script>
-<script src="assets/plugins/jquery.sticky.min.js"></script>
-<script src="assets/plugins/jquery.easing.min.js"></script>
-<script src="assets/plugins/jquery.smoothscroll.min.js"></script>
-<!--<script src="assets/plugins/smooth-scrollbar.min.js"></script>-->
-<!--<script src="assets/plugins/wow/wow.min.js"></script>-->
-<script>
-    // WOW - animated content
-    //new WOW().init();
-</script>
-<script src="assets/plugins/swiper/js/swiper.jquery.min.js"></script>
-<script src="assets/plugins/datetimepicker/js/moment-with-locales.min.js"></script>
-<script src="assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-
-<!-- JS Page Level -->
-<script src="assets/js/theme-ajax-mail.js"></script>
-<script src="assets/js/theme.js"></script>
-<script src="assets/js/intlTelInput.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
-<script src="assets/js/intlTelInput.js"></script>
-<script>
-    var input = document.querySelector("#phone");
-    window.intlTelInput(input, {
-        
-        utilsScript: "assets/js/utils.js",
-    });
-</script>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+    integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+    integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
+    crossorigin="anonymous"></script>
+
 </html>

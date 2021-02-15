@@ -68,12 +68,8 @@ unset($_SESSION['carid']);
     </div>
     <!-- /PRELOADER -->
     <!-- login  -->
-<<<<<<< HEAD
 
     <div class="modal loginPOPUP" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-=======
-    <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
->>>>>>> 3676ab064136801be56af03150560b815ad9d91c
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -84,7 +80,6 @@ unset($_SESSION['carid']);
                 <form action="log.php" method="post">
                     <div class="modal-body">
                         <div class="input-group mb-3">
-<<<<<<< HEAD
                             <span class="input-group-text"
                                 style="background-color: #ee0000; color: white; outline: none;"
                                 id="inputGroup-sizing-default">Email</span>
@@ -96,35 +91,18 @@ unset($_SESSION['carid']);
                                 style="background-color: #ee0000; color: white; outline: none;"
                                 id="inputGroup-sizing-default">Password</span>
                             <input type="password" name="password" class="form-control" aria-label="Sizing example input"
-=======
-                            <label class="input-group-text" id="inputGroup-sizing-default" for="email">Email</label>
-                            <input type="text" class="form-control" aria-label="Sizing example input" id="email"
                                 aria-describedby="inputGroup-sizing-default">
                         </div>
-                        <div class="input-group mb-3">
-                            <label class="input-group-text" id="inputGroup-sizing-default"
-                                for="password">Password</label>
-                            <input type="password" class="form-control" aria-label="Sizing example input" id="password"
->>>>>>> 3676ab064136801be56af03150560b815ad9d91c
-                                aria-describedby="inputGroup-sizing-default">
-                        </div>
-                        <button class="btn btn-primary">LOGIN</button>
                     </div>
                     <div class="modal-footer">
-<<<<<<< HEAD
                         <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
                         <button type="submit" style="background-color: #ee0000;" name="Login" class="btn btn-primary">LOGIN</button>
-=======
-                        <a href="#">Don't have an account, Sign in</a>
-                        <a href="#">Forget Password</a>
->>>>>>> 3676ab064136801be56af03150560b815ad9d91c
                     </div>
                 </form>
             </div>
         </div>
     </div>
     <!-- login  -->
-<<<<<<< HEAD
     <!-- WRAPPER -->
     <div class="wrapper">
 
@@ -143,23 +121,6 @@ unset($_SESSION['carid']);
                 <li><a href="#">HOT DEALS</a></li>
                 <li><a href="#">CONTACT</a></li>
                 <?php
-=======
-    <!-- HEADER -->
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <img class="logo" src="assets/img/logo.png" alt="logo" />
-        <ul>
-            <li><a class="active" href="index.php">Home</a></li>
-            <li><a href="aboutus.php">About us</a></li>
-            <li><a href="veh.php">VAHICLES</a></li>
-            <li><a href="#">FAQS</a></li>
-            <li><a href="#">HOT DEALS</a></li>
-            <li><a href="#">CONTACT</a></li>
-            <?php
->>>>>>> 3676ab064136801be56af03150560b815ad9d91c
                     if(!$_SESSION['login'])
                         echo '
                         <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
@@ -169,11 +130,9 @@ unset($_SESSION['carid']);
                 ?>
 
 
-        </ul>
-    </nav>
-    <!-- /HEADER -->
-    <!-- WRAPPER -->
-    <div class="wrapper">
+            </ul>
+        </nav>
+        <!-- /HEADER -->
         <div class="banner">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
