@@ -104,35 +104,35 @@ unset($_SESSION['carid']);
     </div>
     <!-- login  -->
     <!-- WRAPPER -->
+    <!-- HEADER -->
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <img class="logo" src="assets/img/logo.png" alt="logo" />
+        <ul>
+            <li><a class="active" href="index.php">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="veh.php">VAHICLES</a></li>
+            <li><a href="#">FAQS</a></li>
+            <li><a href="#">HOT DEALS</a></li>
+            <li><a href="#">CONTACT</a></li>
+            <?php
+                if(!$_SESSION['login'])
+                    echo '
+                    <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
+                    <li><a class="loginSignup" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOGIN</a></li>';
+                   else
+                echo '<li><a class="loginSignup" href="logout.php">LOGOUT</a></li>';
+            ?>
+
+
+        </ul>
+    </nav>
+    <!-- /HEADER -->
     <div class="wrapper">
 
-        <!-- HEADER -->
-        <nav>
-            <input type="checkbox" id="check">
-            <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
-            </label>
-            <img class="logo" src="assets/img/logo.png" alt="logo" />
-            <ul>
-                <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="#">About us</a></li>
-                <li><a href="veh.php">VAHICLES</a></li>
-                <li><a href="#">FAQS</a></li>
-                <li><a href="#">HOT DEALS</a></li>
-                <li><a href="#">CONTACT</a></li>
-                <?php
-                    if(!$_SESSION['login'])
-                        echo '
-                        <li><a class="loginSignup" href="signup.php">SIGNUP</a></li>
-                        <li><a class="loginSignup" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOGIN</a></li>';
-                       else
-                    echo '<li><a class="loginSignup" href="logout.php">LOGOUT</a></li>';
-                ?>
-
-
-            </ul>
-        </nav>
-        <!-- /HEADER -->
         <div class="banner">
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                 <div class="carousel-inner">
