@@ -90,13 +90,14 @@ unset($_SESSION['carid']);
                             <span class="input-group-text"
                                 style="background-color: #ee0000; color: white; outline: none;"
                                 id="inputGroup-sizing-default">Password</span>
-                            <input type="password" name="password" class="form-control" aria-label="Sizing example input"
-                                aria-describedby="inputGroup-sizing-default">
+                            <input type="password" name="password" class="form-control"
+                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
-                        <button type="submit" style="background-color: #ee0000;" name="Login" class="btn btn-primary">LOGIN</button>
+                        <button type="submit" style="background-color: #ee0000;" name="Login"
+                            class="btn btn-primary">LOGIN</button>
                     </div>
                 </form>
             </div>
@@ -237,6 +238,18 @@ unset($_SESSION['carid']);
                                                     placeholder="00:00">
                                                 <span class="form-control-icon"><i class="fa fa-clock-o"></i></span>
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-inputs">
+                                    <div class="container-fluid">
+                                        <div class="col-lg-12 form-group">
+                                            <select class="form-select has-icon form-control" aria-label="Default select example">
+                                                <option selected>Select Car Type</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
