@@ -1,3 +1,5 @@
+<?php
+echo '
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +12,137 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/theme.css">
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        nav {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ee0000;
+            max-height: 80px;
+            width: 100%;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            position: fixed;
+        }
+
+        .logo {
+            width: 150px;
+            margin: 20px;
+        }
+
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+
+        nav ul li a {
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            padding: 7px 13px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        nav ul li a.loginSignup {
+            background: white;
+            color: #ee0000;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+
+        nav ul li a.loginSignup:hover {
+            color: black;
+        }
+
+        a.active,
+        a:hover {
+            color: black;
+            transition: .5s;
+        }
+
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 952px) {
+            .nav {
+                flex-direction: row-reverse;
+            }
+
+            .logo {
+                width: 100px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .nav {
+                flex-direction: row-reverse;
+            }
+
+            .checkbtn {
+                display: block;
+            }
+
+            ul {
+                position: fixed;
+                width: 100%;
+                max-height: 100vh;
+                background: #ee0000;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 20px 0;
+                line-height: 30px;
+            }
+
+            nav ul li a {
+                font-size: 20px;
+            }
+
+            a:hover,
+            a.active {
+                background: none;
+                color: black;
+            }
+
+            #check:checked~ul {
+                left: 0;
+            }
+        }
+
         .searchACar {
             width: 100%;
             margin-top: 80px;
@@ -95,33 +226,18 @@
         .carBox .options {
             display: flex;
             width: 100%;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
         }
 
-        .carBox .options form {
+        .carBox .options div {
             width: 100%;
             margin: 10px;
             font-weight: 500;
             color: #ee0000;
             text-transform: uppercase;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
         }
-        .carBox .options form div{
-            width: 100%;
-        }
-        .carBox .options form button{
-            color: white;
-            background-color: #ee0000;
-            outline: none;
-            border: 1px solid #ee0000;
-        }
-        .carBox .options form button:hover{
-            box-shadow: 1px 1px 5px gray;
-        }
+
         .carCard {
             display: flex;
             justify-content: space-evenly;
@@ -161,16 +277,13 @@
         .carContent .carFeatures {
             /* display: flex; */
             /* justify-content: center; */
-            /* width: 100%; */
         }
 
-        .carContent .carFeatures tr td {
+        .carContent .carFeatures span {
             margin: 10px;
-            padding: 4px;
-            width: auto;
         }
 
-        .carContent .carFeatures tr i {
+        .carContent .carFeatures span i {
             color: #ee0000;
         }
 
@@ -207,12 +320,6 @@
             .carContent {
                 flex-direction: row;
             }
-
-            .carContent .carFeatures tr td {
-                margin: 10px;
-                padding: 4px;
-                width: 200px;
-            }
         }
 
         @media (max-width: 450px) {
@@ -220,12 +327,6 @@
                 flex-direction: column;
                 /* justify-content: space-evenly; */
                 margin-bottom: 10px;
-            }
-
-            .carContent .carFeatures tr td {
-                margin: 10px;
-                padding: 4px;
-                width: 200px;
             }
         }
     </style>
@@ -286,101 +387,64 @@
         </div> -->
         <div class="carBox">
             <div class="options container">
-                <form action="#" method="post">
-                    <div>
+                <div>
+                    <form action="#" method="post">
                         <label for="type">Vehicle Type</label>
                         <select class="form-select" id="type" aria-label="Default select example">
-                            <option selected>All</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <button type="submit"></button>
+                            <option selected>All</option></button>
+                            <button type="submit"></button>
+                            <option value="1">One</option></button>
+                            <button type="submit"></button>
+                            <option value="2">Two</option></button>
+                            <button type="submit"></button>
+                            <option value="3">Three</option></button>
                         </select>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Update</button>
-                </form>
+                    </form>
+                </div>
             </div>
-            <?php include("connection.php")?>
-                <?php
-                    $query = "SELECT id, name, model, fuel_type, engine_type FROM cars";
-                    $result = $con->query($query);
-                    while($row = $result -> fetch_assoc())
-                    {
-                        $carid = $row['id'];
-                        $dropOffLoc =  $_POST['formSearchOffLocation'];
-                        $pickUpLoc = $_POST['formSearchUpLocation'];
-                        $pickUpDate = $_POST['formSearchUpDate'];
-                        $dropOffDate = $_POST['formSearchOffDate'];
-                        $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
-                        $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
-                        $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
-                        $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
-                        $_SESSION['regiss'] = $regiss;
-                        echo '
-                       <div class="carCard">
-                            <div class="carImg">
-                                <img src="assets/img/car.jpg" alt="car">
-                            </div>
-
-                            <div class="carDetail">
-                                <div class="carContent">
-                                    <div>
-                                        <h4>$row['name']</h4>
-                                        <table class="carFeatures">
-                                            <tr>
-                                                <td><i class="fas fa-car"></i></td>
-                                                <td>$row['model']</td>
-                                                <td><i class="fas fa-tint"></i></td>
-                                                <td>Air Cond.</td>
-                                                <td><i class="fas fa-wheelchair"></i></td>
-                                                <td>4 Seats</td>
-                                            </tr>
-                                            <tr>
-                                                <td><i class="fas fa-door-open"></i></td>
-                                                <td>4 Door</td>
-                                                <td><i class="fas fa-magic"></i></td>
-                                                <td>$row['engine_type']</td>
-                                                <td><i class="fas fa-gas-pump"></i></td>
-                                                <td>$row['fuel_type']</td>
-                                            </tr>
-                                        </table>
-                                        <!-- <div class="carFeatures">
-                                            <span><i class="fas fa-car"></i> Model</span>
-                                            <span><i class="fas fa-tint"></i> Air Cond.</span>
-                                            <span><i class="fas fa-wheelchair"></i> 4 Seats</span><br>
-                                            <span><i class="fas fa-door-open"></i> 4 Door</span>
-                                            <span><i class="fas fa-magic"></i> Automatic</span>
-                                            <span><i class="fas fa-gas-pump"></i> Fuel</span>
-                                        </div> -->
-                                    </div>
-                                    <div>
-                                        <h4>3,700 PKR/day</h4>
-                                    </div>
-                                    <!-- <div>
-                                        <div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" id="inCity">
-                                                <label class="form-check-label" for="inCity">
-                                                    In City
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" id="outCity">
-                                                <label class="form-check-label" for="outCity">
-                                                    Out City
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                </div>
-                                <div class="carBtn">
-                                    <button type="button" class="btn btn-primary btn-lg">Book Now</button>
-                                </div>
+            <div class="carCard">
+                <div class="carImg">
+                    <img src="./car-370x220x1.jpg" alt="car">
+                </div>
+                <div class="carDetail">
+                    <div class="carContent">
+                        <div>
+                            <h4>TOYOTA COROLLA</h4>
+                            <div class="carFeatures">
+                                <span><i class="fas fa-car"></i> Model</span>
+                                <span><i class="fas fa-tint"></i> Air Cond.</span>
+                                <span><i class="fas fa-wheelchair"></i> 4 Seats</span><br>
+                                <span><i class="fas fa-door-open"></i> 4 Door</span>
+                                <span><i class="fas fa-magic"></i> Automatic</span>
+                                <span><i class="fas fa-gas-pump"></i> Fuel</span>
                             </div>
                         </div>
-                       ';
-                    }
-                ?>
-            
+                        <div>
+                            <h4>3,700 PKR/day</h4>
+                        </div>
+                        <!-- <div>
+                            <div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="inCity">
+                                    <label class="form-check-label" for="inCity">
+                                        In City
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="outCity">
+                                    <label class="form-check-label" for="outCity">
+                                        Out City
+                                    </label>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="carBtn">
+                        <button type="button" class="btn btn-primary btn-lg">Book Now</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -392,26 +456,26 @@
                     <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="./index.php" method="post">
+                <form action="log.php" method="post">
                     <div class="modal-body">
                         <div class="input-group mb-3">
                             <span class="input-group-text"
                                 style="background-color: #ee0000; color: white; outline: none;"
                                 id="inputGroup-sizing-default">Email</span>
-                            <input type="text" class="form-control" aria-label="Sizing example input"
+                            <input type="text" name="username" class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text"
                                 style="background-color: #ee0000; color: white; outline: none;"
                                 id="inputGroup-sizing-default">Password</span>
-                            <input type="password" class="form-control" aria-label="Sizing example input"
+                            <input type="password" name="password" class="form-control" aria-label="Sizing example input"
                                 aria-describedby="inputGroup-sizing-default">
                         </div>
                     </div>
                     <div class="modal-footer">
                         <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
-                        <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
+                        <button type="submit" style="background-color: #ee0000;" name="Login" class="btn btn-primary">LOGIN</button>
                     </div>
                 </form>
             </div>
@@ -430,3 +494,5 @@
     crossorigin="anonymous"></script>
 
 </html>
+';
+?>

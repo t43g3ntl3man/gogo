@@ -47,136 +47,9 @@ if (isset($_POST["findcar"]))
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/theme.css">
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            text-decoration: none;
-            list-style: none;
-            box-sizing: border-box;
-        }
-
-        nav {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #ee0000;
-            max-height: 80px;
-            width: 100%;
-            z-index: 100;
-            top: 0;
-            left: 0;
-            position: fixed;
-        }
-
-        .logo {
-            width: 150px;
-            margin: 20px;
-        }
-
-        nav ul {
-            float: right;
-            margin-right: 20px;
-        }
-
-        nav ul li {
-            display: inline-block;
-            line-height: 80px;
-            margin: 0 5px;
-        }
-
-        nav ul li a {
-            color: white;
-            font-size: 17px;
-            font-weight: bold;
-            padding: 7px 13px;
-            text-transform: uppercase;
-            text-decoration: none;
-        }
-
-        nav ul li a.loginSignup {
-            background: white;
-            color: #ee0000;
-            border-radius: 5px;
-            font-size: 12px;
-        }
-
-        nav ul li a.loginSignup:hover {
-            color: black;
-        }
-
-        a.active,
-        a:hover {
-            color: black;
-            transition: .5s;
-        }
-
-        .checkbtn {
-            font-size: 30px;
-            color: white;
-            float: right;
-            line-height: 80px;
-            margin-right: 40px;
-            cursor: pointer;
-            display: none;
-        }
-
-        #check {
-            display: none;
-        }
-
-        @media (max-width: 952px) {
-            .nav {
-                flex-direction: row-reverse;
-            }
-
-            .logo {
-                width: 100px;
-            }
-
-            nav ul li a {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 1100px) {
-            .nav {
-                flex-direction: row-reverse;
-            }
-
-            .checkbtn {
-                display: block;
-            }
-
-            ul {
-                position: fixed;
-                width: 100%;
-                max-height: 100vh;
-                background: #ee0000;
-                top: 80px;
-                left: -100%;
-                text-align: center;
-                transition: all .5s;
-            }
-
-            nav ul li {
-                display: block;
-                margin: 20px 0;
-                line-height: 30px;
-            }
-
-            nav ul li a {
-                font-size: 20px;
-            }
-
-            a:hover,
-            a.active {
-                background: none;
-                color: black;
-            }
-
-            #check:checked~ul {
-                left: 0;
-            }
-        }
+        
 
         .searchACar {
             width: 100%;
@@ -283,7 +156,7 @@ if (isset($_POST["findcar"]))
         }
 
         .carCard .carImg {
-            flex: 1;
+            flex: 2;
         }
 
         .carCard img {
@@ -291,8 +164,10 @@ if (isset($_POST["findcar"]))
         }
 
         .carCard .carDetail {
-            flex: 3;
+            flex: 2;
             display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
         }
 
@@ -303,17 +178,31 @@ if (isset($_POST["findcar"]))
         .carContent {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .carContent .carFeatures {
+            /* display: flex; */
+            /* justify-content: center; */
+            /* width: 100%; */
+        }
+
+        .carContent .carFeatures tr td {
+            margin: 10px;
+            padding: 4px;
+            width: auto;
+        }
+
+        .carContent .carFeatures tr i {
+            color: #ee0000;
         }
 
         .carContent h4 {
             color: #ee0000;
             font-weight: bold;
-        }
+            font-size: 30px;
 
-        .carContent h6 {
-            color: #ee0000;
-            font-weight: bold;
         }
 
         .carCard .carDetail div button {
@@ -343,11 +232,24 @@ if (isset($_POST["findcar"]))
                 flex-direction: row;
             }
 
-            @media (max-width: 450px) {
-                .carContent {
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                }
+            .carContent .carFeatures tr td {
+                margin: 10px;
+                padding: 4px;
+                width: 200px;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .carContent {
+                flex-direction: column;
+                /* justify-content: space-evenly; */
+                margin-bottom: 10px;
+            }
+
+            .carContent .carFeatures tr td {
+                margin: 10px;
+                padding: 4px;
+                width: 200px;
             }
         }
     </style>
@@ -359,7 +261,7 @@ if (isset($_POST["findcar"]))
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <img class="logo" src="assets/img/logo-rentit.png" alt="logo" />
+        <img class="logo" src="./assets/img/logo.png" alt="logo" />
         <ul>
             <li><a class="active" href="/">Home</a></li>
             <li><a href="./aboutus.php">About us</a></li>
@@ -371,35 +273,7 @@ if (isset($_POST["findcar"]))
             <li><a class="loginSignup" href="./signup.php">SIGNUP</a></li>
         </ul>
     </nav>
-        <!-- login  -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="" method="post">
-          <div class="modal-body">
-            <div class="input-group mb-3">
-              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Email</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Password</span>
-              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
-            <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-        <!-- login  -->
+
     <section class="searchACar">
         <!-- <div class="searchACarDiv">
             <form action="" class="container searchACarForm">
@@ -434,16 +308,14 @@ if (isset($_POST["findcar"]))
                 </div>
             </form>
         </div> -->
-
-
         <div class="carBox">
             <div class="options container">
                 <div>
-                    <form method="post", action="vehicles.php">
+                    <form action="veh" method="post">
                         <label for="type">Vehicle Type</label>
                         <select class="form-select" id="type" aria-label="Default select example">
                             <option>All</option>
-                            <option type="submit" value="Economic">Economic</option>
+                            <option value="Economic">Economic</option>
                             <option value="Luxurious">Luxurious</option>
                             <option value="Executive">Executive</option>
                             <option value="Wagon">Wagon</option>
@@ -451,18 +323,8 @@ if (isset($_POST["findcar"]))
                         </select>
                     </form>
                 </div>
-                <div>
-                    <label for="brand">Select Brand</label>
-                    <select class="form-select" id="brand" aria-label="Default select example">
-                        <option selected>All</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
-                </div>
             </div>
-            
-                <?php include("connection.php")?>
+            <?php include("connection.php")?>
                 <?php
                     $query = "SELECT id, name, model, fuel_type, engine_type FROM cars";
                     $result = $con->query($query);
@@ -480,37 +342,86 @@ if (isset($_POST["findcar"]))
                         $_SESSION['regiss'] = $regiss;
                         echo '
                         <div class="carCard">
-                        <div class="carImg">
-                            <img src="./car-370x220x1.jpg" alt="car">
-                        </div>
-                        <div class="carDetail">
-                            <div class="carContent">
-                                <div>
-                                    <h4>'.$row['name'].'</h4>
-                                </div>
-                                <div>
-                                    <h4>'.$_SESSION["priceforcartype"].' PKR/day</h4>
+                            <div class="carImg">
+                                <img src="assets/img/car.jpg" alt="car">
+                            </div>
+
+                            <div class="carDetail">
+                                <div class="carContent">
                                     <div>
+                                        <h4>'.$row['name'].'</h4>
+                                        <table class="carFeatures">
+                                            <tr>
+                                                <td><i class="fas fa-car"></i></td>
+                                                <td>'.$row['model'].'</td>
+                                                <td><i class="fas fa-tint"></i></td>
+                                                <td>Air Cond.</td>
+                                                <td><i class="fas fa-wheelchair"></i></td>
+                                                <td>4 Seats</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i class="fas fa-door-open"></i></td>
+                                                <td>4 Door</td>
+                                                <td><i class="fas fa-magic"></i></td>
+                                                <td>'.$row['engine_type'].'</td>
+                                                <td><i class="fas fa-gas-pump"></i></td>
+                                                <td>'.$row['fuel_type'].'</td>
+                                            </tr>
+                                        </table>
                                         
                                     </div>
+                                    <div>
+                                        <h4>3,700 PKR/day</h4>
+                                    </div>
+                                    
                                 </div>
-                            </div>
-                            <div class="carBtn">
-                                 <form method="post" action="details.php">
+                                <div class="carBtn">
+                                    <form method="post" action="details.php">
                                     <input type="hidden" name = "carid" value="'.$carid.'">
                                     <button type="submit" class="btn btn-primary btn-lg" name="details" value="details">Book Now</button>
                                 </form>
-                                
+                                </div>
                             </div>
-                        </div>
                         </div>';
                     }
                 ?>
-           
+            
         </div>
     </section>
 
-
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="./index.php" method="post">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Email</span>
+                            <input type="text" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Password</span>
+                            <input type="password" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
+                        <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"

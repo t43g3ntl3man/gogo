@@ -118,7 +118,7 @@ session_start();
             <img class="logo" src="assets/img/logo.png" alt="logo" />
             <ul>
                 <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="aboutus.php">About us</a></li>
+                <li><a href="#">About us</a></li>
                 <li><a href="veh.php">VAHICLES</a></li>
                 <li><a href="#">FAQS</a></li>
                 <li><a href="#">HOT DEALS</a></li>
@@ -187,8 +187,8 @@ session_start();
                 <div class="sec1">
                     <div class="Pick-up">
                         <h2>Pick-up</h2>
-                        <p>Kayaban-e-Saadi, Phase 7 Ext Def..</p>
-                        <p>Feb, 8 2021, 10:00 PM</p>
+                        <p><?php echo $_SESSION['regiss'][2] ?></p>
+                        <p><?php echo $_SESSION['regiss'][4] ?>, <?php echo $_SESSION['regiss'][5] ?></p>
                         <div class="bookingType">
                             <h5>Booking Type:</h5>
                             <input type="radio" id="FullDayRental" value="FullDayRental">
@@ -202,8 +202,8 @@ session_start();
                     </div>
                     <div class="Drop-Off">
                         <h2>Drop-Off</h2>
-                        <p>Kayaban-e-Saadi, Phase 7 Ext Def..</p>
-                        <p>Feb, 8 2021, 10:00 PM</p>
+                        <p><?php echo $_SESSION['regiss'][1] ?></p>
+                        <p><?php echo $_SESSION['regiss'][3] ?>, <?php echo $_SESSION['regiss'][6] ?></p>
                     </div>
                 </div>
                 <div class="sec2">
