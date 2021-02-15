@@ -1,3 +1,40 @@
+<?php
+session_start();
+$_SESSION["findcartype"] = "All";
+if (isset($_POST["findcar"]))
+{
+    if ($_POST["cartype"] == "Economic")
+    {
+        $_SESSION["findcartype"] = "Economy";
+        $_SESSION["priceforcartype"] = "150000";
+    }
+    elseif ($_POST["cartype"] == "Luxurious")
+    {
+        $_SESSION["findcartype"] = "Luxuriuos";
+        $_SESSION["priceforcartype"] = "300000";
+    }
+    elseif ($_POST["cartype"] == "Executive")
+    {
+        $_SESSION["findcartype"] = "Executive";
+        $_SESSION["priceforcartype"] = "450000";
+    }
+    elseif ($_POST["cartype"] == "Wagon")
+    {
+        $_SESSION["findcartype"] = "Wagon";
+        $_SESSION["priceforcartype"] = "100000";
+    }
+    elseif ($_POST["cartype"] == "SUV")
+    {
+        $_SESSION["findcartype"] = "SUV";
+        $_SESSION["priceforcartype"] = "200000";
+    }
+    else
+    {
+        $_SESSION["findcartype"] = "All";
+        $_SESSION["priceforcartype"] = "150000";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -274,17 +311,15 @@
         <div class="carBox">
             <div class="options container">
                 <div>
-                    <form action="#" method="post">
+                    <form action="veh" method="post">
                         <label for="type">Vehicle Type</label>
                         <select class="form-select" id="type" aria-label="Default select example">
-                            <button type="submit"></button>
-                            <option selected>All</option></button>
-                            <button type="submit"></button>
-                            <option value="1">One</option></button>
-                            <button type="submit"></button>
-                            <option value="2">Two</option></button>
-                            <button type="submit"></button>
-                            <option value="3">Three</option></button>
+                            <option>All</option>
+                            <option value="Economic">Economic</option>
+                            <option value="Luxurious">Luxurious</option>
+                            <option value="Executive">Executive</option>
+                            <option value="Wagon">Wagon</option>
+                            <option value="SUV">SUVs</option>
                         </select>
                     </form>
                 </div>
