@@ -115,7 +115,7 @@ unset($_SESSION['carid']);
             <img class="logo" src="assets/img/logo.png" alt="logo" />
             <ul>
                 <li><a class="active" href="index.php">Home</a></li>
-                <li><a href="aboutus.php">About us</a></li>
+                <li><a href="#">About us</a></li>
                 <li><a href="veh.php">VAHICLES</a></li>
                 <li><a href="#">FAQS</a></li>
                 <li><a href="#">HOT DEALS</a></li>

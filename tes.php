@@ -1,40 +1,5 @@
 <?php
-session_start();
-$_SESSION["findcartype"] = "All";
-if (isset($_POST["findcar"]))
-{
-    if ($_POST["cartype"] == "Economic")
-    {
-        $_SESSION["findcartype"] = "Economy";
-        $_SESSION["priceforcartype"] = "150000";
-    }
-    elseif ($_POST["cartype"] == "Luxurious")
-    {
-        $_SESSION["findcartype"] = "Luxuriuos";
-        $_SESSION["priceforcartype"] = "300000";
-    }
-    elseif ($_POST["cartype"] == "Executive")
-    {
-        $_SESSION["findcartype"] = "Executive";
-        $_SESSION["priceforcartype"] = "450000";
-    }
-    elseif ($_POST["cartype"] == "Wagon")
-    {
-        $_SESSION["findcartype"] = "Wagon";
-        $_SESSION["priceforcartype"] = "100000";
-    }
-    elseif ($_POST["cartype"] == "SUV")
-    {
-        $_SESSION["findcartype"] = "SUV";
-        $_SESSION["priceforcartype"] = "200000";
-    }
-    else
-    {
-        $_SESSION["findcartype"] = "All";
-        $_SESSION["priceforcartype"] = "150000";
-    }
-}
-?>
+echo '
 <!DOCTYPE html>
 <html lang="en">
 
@@ -283,7 +248,7 @@ if (isset($_POST["findcar"]))
         }
 
         .carCard .carImg {
-            flex: 1;
+            flex: 2;
         }
 
         .carCard img {
@@ -291,8 +256,10 @@ if (isset($_POST["findcar"]))
         }
 
         .carCard .carDetail {
-            flex: 3;
+            flex: 2;
             display: flex;
+            justify-content: center;
+            align-items: center;
             flex-direction: column;
         }
 
@@ -303,17 +270,28 @@ if (isset($_POST["findcar"]))
         .carContent {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .carContent .carFeatures {
+            /* display: flex; */
+            /* justify-content: center; */
+        }
+
+        .carContent .carFeatures span {
+            margin: 10px;
+        }
+
+        .carContent .carFeatures span i {
+            color: #ee0000;
         }
 
         .carContent h4 {
             color: #ee0000;
             font-weight: bold;
-        }
+            font-size: 30px;
 
-        .carContent h6 {
-            color: #ee0000;
-            font-weight: bold;
         }
 
         .carCard .carDetail div button {
@@ -342,12 +320,13 @@ if (isset($_POST["findcar"]))
             .carContent {
                 flex-direction: row;
             }
+        }
 
-            @media (max-width: 450px) {
-                .carContent {
-                    flex-direction: column;
-                    justify-content: space-evenly;
-                }
+        @media (max-width: 450px) {
+            .carContent {
+                flex-direction: column;
+                /* justify-content: space-evenly; */
+                margin-bottom: 10px;
             }
         }
     </style>
@@ -359,7 +338,7 @@ if (isset($_POST["findcar"]))
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <img class="logo" src="assets/img/logo-rentit.png" alt="logo" />
+        <img class="logo" src="./assets/img/logo.png" alt="logo" />
         <ul>
             <li><a class="active" href="/">Home</a></li>
             <li><a href="./aboutus.php">About us</a></li>
@@ -371,35 +350,7 @@ if (isset($_POST["findcar"]))
             <li><a class="loginSignup" href="./signup.php">SIGNUP</a></li>
         </ul>
     </nav>
-        <!-- login  -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form action="" method="post">
-          <div class="modal-body">
-            <div class="input-group mb-3">
-              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Email</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text" style="background-color: #ee0000; color: white; outline: none;" id="inputGroup-sizing-default">Password</span>
-              <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
-            <button type="submit" style="background-color: #ee0000;" class="btn btn-primary">LOGIN</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-        <!-- login  -->
+
     <section class="searchACar">
         <!-- <div class="searchACarDiv">
             <form action="" class="container searchACarForm">
@@ -434,83 +385,102 @@ if (isset($_POST["findcar"]))
                 </div>
             </form>
         </div> -->
-
-
         <div class="carBox">
             <div class="options container">
                 <div>
-                    <form method="post", action="vehicles.php">
+                    <form action="#" method="post">
                         <label for="type">Vehicle Type</label>
                         <select class="form-select" id="type" aria-label="Default select example">
-                            <option>All</option>
-                            <option type="submit" value="Economic">Economic</option>
-                            <option value="Luxurious">Luxurious</option>
-                            <option value="Executive">Executive</option>
-                            <option value="Wagon">Wagon</option>
-                            <option value="SUV">SUVs</option>
+                            <button type="submit"></button>
+                            <option selected>All</option></button>
+                            <button type="submit"></button>
+                            <option value="1">One</option></button>
+                            <button type="submit"></button>
+                            <option value="2">Two</option></button>
+                            <button type="submit"></button>
+                            <option value="3">Three</option></button>
                         </select>
                     </form>
                 </div>
-                <div>
-                    <label for="brand">Select Brand</label>
-                    <select class="form-select" id="brand" aria-label="Default select example">
-                        <option selected>All</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                    </select>
+            </div>
+            <div class="carCard">
+                <div class="carImg">
+                    <img src="./car-370x220x1.jpg" alt="car">
+                </div>
+                <div class="carDetail">
+                    <div class="carContent">
+                        <div>
+                            <h4>TOYOTA COROLLA</h4>
+                            <div class="carFeatures">
+                                <span><i class="fas fa-car"></i> Model</span>
+                                <span><i class="fas fa-tint"></i> Air Cond.</span>
+                                <span><i class="fas fa-wheelchair"></i> 4 Seats</span><br>
+                                <span><i class="fas fa-door-open"></i> 4 Door</span>
+                                <span><i class="fas fa-magic"></i> Automatic</span>
+                                <span><i class="fas fa-gas-pump"></i> Fuel</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>3,700 PKR/day</h4>
+                        </div>
+                        <!-- <div>
+                            <div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="inCity">
+                                    <label class="form-check-label" for="inCity">
+                                        In City
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="outCity">
+                                    <label class="form-check-label" for="outCity">
+                                        Out City
+                                    </label>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="carBtn">
+                        <button type="button" class="btn btn-primary btn-lg">Book Now</button>
+                    </div>
                 </div>
             </div>
-            
-                <?php include("connection.php")?>
-                <?php
-                    $query = "SELECT id, name, model, fuel_type, engine_type FROM cars";
-                    $result = $con->query($query);
-                    while($row = $result -> fetch_assoc())
-                    {
-                        $carid = $row['id'];
-                        $dropOffLoc =  $_POST['formSearchOffLocation'];
-                        $pickUpLoc = $_POST['formSearchUpLocation'];
-                        $pickUpDate = $_POST['formSearchUpDate'];
-                        $dropOffDate = $_POST['formSearchOffDate'];
-                        $pickUpTime =  Date('h:i A', strtotime($_POST['formSearchUpTime']));
-                        $dropOffTime = Date('h:i A', strtotime($_POST['formSearchOffTime']));
-                        $_SESSION['regis']=array("carid"=>"$carid", "dropoff"=>"$dropOffLoc", "pickup"=>"$pickUpLoc", "dropdate"=>"$dropOffDate", "pickdate"=>"$pickUpDate", "picktime"=>"$pickUpTime", "droptime"=>"$dropOffTime");
-                        $regiss =  array($carid, $dropOffLoc, $pickUpLoc, $dropOffDate ,$pickUpDate, $pickUpTime, $dropOffTime);
-                        $_SESSION['regiss'] = $regiss;
-                        echo '
-                        <div class="carCard">
-                        <div class="carImg">
-                            <img src="assets/img/car.jpg" alt="car">
-                        </div>
-                        <div class="carDetail">
-                            <div class="carContent">
-                                <div>
-                                    <h4>'.$row['name'].'</h4>
-                                </div>
-                                <div>
-                                    <h4>'.$_SESSION["priceforcartype"].' PKR/day</h4>
-                                    <div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carBtn">
-                                 <form method="post" action="details.php">
-                                    <input type="hidden" name = "carid" value="'.$carid.'">
-                                    <button type="submit" class="btn btn-primary btn-lg" name="details" value="details">Book Now</button>
-                                </form>
-                                
-                            </div>
-                        </div>
-                        </div>';
-                    }
-                ?>
-           
         </div>
     </section>
 
-
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="log.php" method="post">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Email</span>
+                            <input type="text" name="username" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"
+                                style="background-color: #ee0000; color: white; outline: none;"
+                                id="inputGroup-sizing-default">Password</span>
+                            <input type="password" name="password" class="form-control" aria-label="Sizing example input"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" style="color: #ee0000; float: left; outline: none;">Forget Password</a>
+                        <button type="submit" style="background-color: #ee0000;" name="Login" class="btn btn-primary">LOGIN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
@@ -524,3 +494,5 @@ if (isset($_POST["findcar"]))
     crossorigin="anonymous"></script>
 
 </html>
+';
+?>
