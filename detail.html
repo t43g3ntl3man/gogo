@@ -79,7 +79,7 @@ unset($_SESSION['carid']);
             justify-content: center;
             align-items: flex-start;
         }
-        .regForm button{
+        .regForm .btn{
             background-color: #ee0000;
             float: right;
             color: white;
@@ -140,6 +140,37 @@ unset($_SESSION['carid']);
     <!-- /PRELOADER -->
     <!-- login  -->
     <div class="modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">LOGIN</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="" method="post">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" id="inputGroup-sizing-default" for="email">Email</label>
+                            <input type="text" class="form-control" aria-label="Sizing example input" id="email"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" id="inputGroup-sizing-default"
+                                for="password">Password</label>
+                            <input type="password" class="form-control" aria-label="Sizing example input" id="password"
+                                aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <button class="btn btn-primary">LOGIN</button>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#">Don't have an account, Sign in</a>
+                        <a href="#">Forget Password</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -273,6 +304,7 @@ unset($_SESSION['carid']);
                         </div>
                     </div>
                 </div>
+                <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Next</a>
                 <button class="btn" type="submit">Next</button>
             </form>
         </section>
