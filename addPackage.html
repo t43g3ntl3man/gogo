@@ -141,32 +141,40 @@
                 left: 0;
             }
         }
-        .banner{
+
+        .banner {
             margin-top: 90px;
             width: 100%;
             min-height: calc(100vh - 90px);
         }
-        .adminForm{
+
+        .adminForm {
             margin-bottom: 10px;
         }
-        .adminForm .block-title{
+
+        .adminForm .block-title {
             text-align: center;
             color: gray;
             text-transform: uppercase;
             font-size: 40px;
         }
-        .adminForm .button{
-            text-align: center; 
+
+        .adminForm .button {
+            text-align: center;
         }
-        .adminForm label{
+
+        .adminForm label {
             color: #ee0000;
             font-weight: bold;
         }
-        .adminForm input, select{
+
+        .adminForm input,
+        select {
             border-color: gray !important;
             height: 50px;
         }
-        .adminForm .btn{
+
+        .adminForm .btn {
             background-color: #ee0000;
             width: 50%;
             color: white;
@@ -174,7 +182,8 @@
             font-weight: bold;
             transition: ease .6s;
         }
-        .adminForm .btn:hover{
+
+        .adminForm .btn:hover {
             width: 100%;
         }
     </style>
@@ -187,7 +196,7 @@
             <i class="fas fa-bars"></i>
         </label>
         <img class="logo" src="./assets/img/logo.png" alt="logo" />
-        <ul> 
+        <ul>
             <li><a class="active" href="#">Home</a></li>
             <li><a href="#">About us</a></li>
             <li><a href="#">VAHICLES</a></li>
@@ -206,76 +215,44 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h3 class="block-title"><span>Add vehicle</span></h3>
+                                <h3 class="block-title"><span>Add Package</span></h3>
                                 <form method="post" action="upload2.php" enctype="multipart/form-data">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="exampleFormControlInput1">Car Name <i class="fas fa-car"></i></label>
+                                                <label for="exampleFormControlInput1">Package Name <i class="fas fa-file-signature"></i></label>
                                                 <input class="form-control" name="c_name" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="exampleFormControlInput1">Car Model <i class="far fa-steering-wheel"></i></label>
+                                                <label for="exampleFormControlInput1">Location <i
+                                                        class="far fa-location"></i></label>
                                                 <input class="form-control" name="c_model" type="text">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="exampleFormControlInput1">Engine Number <i class="fas fa-car-battery"></i></label>
-                                                <input class="form-control" name="e_number" type="text">
+                                                <label for="exampleFormControlInput1">No of People <i class="fas fa-users"></i></label>
+                                                <input class="form-control" name="e_number" type="number">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="exampleFormControlInput1">Chassis Number <i class="fas fa-list-ol"></i></label>
-                                                <input class="form-control" name="c_number" type="text">
+                                                <label for="exampleFormControlInput1">Amount <i class="fas fa-money-bill-alt"></i></label>
+                                                <input class="form-control" name="e_number" type="number">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Fuel Type <i class="fas fa-gas-pump"></i></label>
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                    name="f_type">
-                                                    <option>Petrol</option>
-                                                    <option>CNG</option>
-                                                    <option>Diesel</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Engine Type <i class="far fa-stroopwafel"></i></label>
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                    name="e_type">
-                                                    <option>Manual</option>
-                                                    <option>Automatic</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="exampleFormControlSelect1">Car Type <i class="fal fa-car-mechanic"></i></label>
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                    name="c_type">
-                                                    <option>Economy</option>
-                                                    <option>Executive</option>
-                                                    <option>Luxuriuos</option>
-                                                </select>
+                                                <label for="exampleFormControlInput1">Date <i class="fas fa-calendar-alt"></i></label>
+                                                <input class="form-control" name="c_number" type="date">
                                             </div>
                                         </div>
                                         <div class="row col-md-12">
-                                            <div class="col-md-6">
-                                                <label for="exampleFormControlSelect1">Add Car picture</label>
-                                                <input class="form-control-file" type="file" name="fileToUpload[]"
-                                                    id="fileToUpload" multiple />
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="exampleFormControlSelect1">Add License picture</label>
-                                                <input class="form-control-file" type="file" name="license[]" id="license"
-                                                    multiple />
-                                            </div>
+                                            <label for="exampleFormControlSelect1">Add Package Poster</label>
+                                            <input class="form-control-file" type="file" name="fileToUpload[]"
+                                                id="fileToUpload" />
                                         </div>
                                         <div class="col-md-12 button">
                                             <input class="btn" type="submit" name="submit" value="Add">
