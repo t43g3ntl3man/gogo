@@ -34,9 +34,9 @@
     <script src="assets/plugins/modernizr.custom.js"></script>
 
     <!--[if lt IE 9]>
-<script src="assets/plugins/iesupport/html5shiv.js"></script>
-<script src="assets/plugins/iesupport/respond.min.js"></script>
-<![endif]-->
+        <script src="assets/plugins/iesupport/html5shiv.js"></script>
+        <script src="assets/plugins/iesupport/respond.min.js"></script>
+        <![endif]-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
@@ -45,14 +45,32 @@
     <script src="asset/js/index.js"></script>
 
     <style>
-        .aboutus {
+        .FAQ {
             min-height: 100vh;
+            padding: 20px;
+        }
+        .FAQ h1 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+        .FAQ .questions{
+        }
+        .FAQ .btn{
+            width: 100%;
+            text-align: left;
+            font-size: 20px;
+            outline: none;
+            border: none;
+        }
+        .FAQ .btn::after{
+            content: "/2212";
+            width: 35px;
             
         }
     </style>
 </head>
 
-<body id="home" class="wide">
+<body>
     <!-- PRELOADER -->
     <div id="preloader">
         <div id="preloader-status">
@@ -130,22 +148,58 @@ echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
     <!-- WRAPPER -->
     <div class="wrapper">
 
-        <section class="aboutus container">
-            <h1>About us</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas adipisci temporibus nobis molestias
-                corrupti, rem magnam perspiciatis, excepturi, dolorum laudantium dolorem a ipsum nostrum nemo quam harum
-                sunt officiis ullam voluptatibus accusantium. Autem alias recusandae maiores eius quae at porro tempora
-                et obcaecati dolorum. Minima, maxime! Sunt tempora, fugiat atque sit officiis alias quia iure eum culpa,
-                molestias doloremque quas enim maiores, corrupti soluta facilis ratione necessitatibus ducimus nobis
-                dignissimos. Laborum neque, alias voluptates consectetur minus sit architecto optio minima in a hic
-                ipsum illum officiis quisquam quasi. Magnam, repudiandae necessitatibus. Fugiat iusto deleniti nam
-                voluptatibus maxime quaerat repudiandae maiores!
-            </p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas adipisci temporibus nobis molestias
-                corrupti, rem magnam perspiciatis, excepturi, dolorum laudantium dolorem a ipsum nostrum nemo quam harum
-                sunt officiis ullam voluptatibus accusantium. Autem alias recusandae maiores eius quae at porro tempora
-                et obcaecati dolorum. Minima, maxime! Sunt tempora.
-            </p>
+
+        <section class="FAQ">
+            <h1>frequently asked questions</h1>
+            <div class="row">
+                <div class="col-ld-12 questions">
+                    <button class="btn" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                        Who can rent a car?
+                    </button>
+                    <div class="collapse" id="collapseExample1">
+                        <div class="card text-dark bg-light mb-3">
+                            <div class="card-body">
+                                <p class="card-text">The car with driver can be rented by anyone above the age of 16.
+
+                                    However, in case of self-drive, minimum age for hiring a car is 21 years and your
+                                    license needs to be at least 1 year old. If you are a resident of Pakistan, you need
+                                    to have a valid driving license along with NIC. If you are on a tourist visa then
+                                    you need to have a valid home country license OR an international driving license
+                                    and valid passport with visa stamp.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-ld-12">
+                    <button class="btn" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                        Who will deliver the car?
+                    </button>
+                    <div class="collapse" id="collapseExample2">
+                        <div class="card text-dark bg-light mb-3">
+                            <div class="card-body">
+                                <p class="card-text">Rently will deliver the car to you at your door step.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-ld-12">
+                    <button class="btn" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                        Can I rent a car with and without driver both?
+                    </button>
+                    <div class="collapse" id="collapseExample3">
+                        <div class="card text-dark bg-light mb-3">
+                            <div class="card-body">
+                                <p class="card-text">Yes, you may book any car available on our website, with driver.
+
+                                    However, the self-drive option is currently limited to Suzuki Wagon R and Daihatsu Mira.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <!-- FOOTER -->
         <footer class="footer">
@@ -168,7 +222,6 @@ echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
     </div>
     <!-- /WRAPPER -->
 
-    <!-- JS Global -->
     <script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
     <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
@@ -178,30 +231,21 @@ echo '<li><a class="loginSignup" href="#">LOGOUT</a></li>';
     <script src="assets/plugins/jquery.sticky.min.js"></script>
     <script src="assets/plugins/jquery.easing.min.js"></script>
     <script src="assets/plugins/jquery.smoothscroll.min.js"></script>
-    <!--<script src="assets/plugins/smooth-scrollbar.min.js"></script>-->
-    <!--<script src="assets/plugins/wow/wow.min.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
-        integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
-        integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
-        crossorigin="anonymous"></script>
-    <script>
-// WOW - animated content
-//new WOW().init();
-    </script>
+
     <script src="assets/plugins/swiper/js/swiper.jquery.min.js"></script>
     <script src="assets/plugins/datetimepicker/js/moment-with-locales.min.js"></script>
     <script src="assets/plugins/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 
-    <!-- JS Page Level -->
     <script src="assets/js/theme-ajax-mail.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
 
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
